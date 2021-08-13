@@ -912,13 +912,12 @@
         b.m_mesh.position.y = Math.sin(b.m_time) * 20 - 20;
         b.m_mesh.rotation.x = time * 0.5;
         b.m_mesh.rotation.z = time * 0.51;
-        b.m_time += 0.04;
+        b.m_time += 0.015;
       }
 
       function animate() {
         requestAnimationFrame(animate);
         render();
-        //            stats.update();
       }
       function render() {
         var time = performance.now() * 0.001;
