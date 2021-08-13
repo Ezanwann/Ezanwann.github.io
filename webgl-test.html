@@ -362,11 +362,8 @@
       scene.add(spotLight);
     }
 
-    let Init = function () {
-      /* // console.log=()=>{}*/
-      console.warn = () => {};
-      console.error = () => {};
-
+    const main = function () {
+      
       THREE.Sky = function () {
         var shader = THREE.Sky.SkyShader;
 
@@ -937,8 +934,13 @@
         water.material.uniforms["time"].value += 1.0 / 60.0;
         renderer.render(scene, camera);
       }
+
+      console.log = () => {}
+      console.warn = () => {};
+      console.error = () => {};
+
     };
 
-    window.onload = Init;
+    window.onload = main;
   </script>
 </html>
