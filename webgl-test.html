@@ -954,7 +954,7 @@ void main(  ) {
           mieDirectionalG: { value: 0.8 },
           sunPosition: { value: new THREE.Vector3() },
 	  iTime: {value: globTime},
-	iChannel0: { type: "t", value: THREE.ImageUtils.loadTexture( "texture.jpg" ) },
+	iChannel0: { value: new Three.TextureLoader().load("texture.jpg") },
 	  iResolution: {value: new Three.Vector2(innerWidth, innerHeight)},
         },
 
