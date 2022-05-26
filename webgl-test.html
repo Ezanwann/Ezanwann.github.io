@@ -220,8 +220,8 @@ const int steps = 16; //16 is fast, 128 or 256 is extreme high
 const int stepss = 16; //16 is fast, 16 or 32 is high 
 
 //Environment
-const float R0 = 6360e3; //planet radius //6360e3 actual 6371km
-const float Ra = 6380e3; //atmosphere radius //6380e3 troposphere 8 to 14.5km
+const float R0 = 6360e1; //planet radius //6360e3 actual 6371km
+const float Ra = 6380e1; //atmosphere radius //6380e3 troposphere 8 to 14.5km
 const float I = 10.; //sun light power, 10.0 is normal
 const float SI = 5.; //sun intensity for sun
 const float g = 0.45; //light concentration .76 //.45 //.6  .45 is normaL
@@ -238,7 +238,7 @@ const float s2 = s * s;
 const float Hr = 8e3; //Rayleigh scattering top //8e3
 const float Hm = 1.2e3; //Mie scattering top //1.3e3
 
-vec3 bM = vec3(21e-6); //normal mie // vec3(21e-6)
+vec3 bM = vec3(21e-4); //normal mie // vec3(21e-6)
 //vec3 bM = vec3(50e-6); //high mie
 
 //Rayleigh scattering (sky color, atmospheric up to 8km)
@@ -517,7 +517,7 @@ vec3 stars(in vec3 p)
 const float PI = 3.14159265358979323846;
 const float density = 0.5;
 const float zenithOffset = 0.48;
-const vec3 skyColor = vec3(0.37, 0.55, 1.0) * (1.0 + 0.0);
+const vec3 skyColor = vec3(0.37, 0.25, 1.0) * (1.0 + 0.0);
 
 #define zenithDensity(x) density / pow(max(x - zenithOffset, 0.0035), 0.75)
 
@@ -709,7 +709,7 @@ void main(  ) {
     uv1 *=M;
     uv1.x *=AR;
     
-    vec3 sun2 = getAtmosphericScattering(uv1, vec2(uvMouse.x,uvMouse.y) + vec2(0, -10.)) ;
+    vec3 sun2 = getAtmosphericScattering(uv1, vec2(uvMouse.x,uvMouse.y)) ;
     color += sun2;
     #endif
     
