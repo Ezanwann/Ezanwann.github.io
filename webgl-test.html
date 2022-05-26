@@ -176,6 +176,7 @@
 // Creates a sky texture for a skydome
 // https://www.shadertoy.com/view/ltlSWB
 
+uniform float iTime;
 
 mat2 mm2(in float a){float c = cos(a), s = sin(a);return mat2(c,s,-s,c);}
 mat2 m2 = mat2(0.95534, 0.29552, -0.29552, 0.95534);
@@ -192,7 +193,7 @@ float triNoise2d(in vec2 p, float spd)
 	for (float i=0.; i<5.; i++ )
 	{
         vec2 dg = tri2(bp*1.85)*.75;
-        dg *= mm2(time*spd);
+        dg *= mm2(iTime*spd);
         p -= dg/z2;
 
         bp *= 1.3;
@@ -245,8 +246,8 @@ vec4 aurora(vec3 ro, vec3 rd)
 
 vec3 nmzHash33(vec3 q)
 {
-    uvec3 p = uvec3(ivec3(q));
-    p = p*uvec3(374761393U, 1103515245U, 668265263U) + p.zxy + p.yzx;
+    vec3 p = vec3(ivec3(q));
+    p = p*vec3(374761393U, 1103515245U, 668265263U) + p.zxy + p.yzx;
     p = p.yzx*(p.zxy^(p >> 3U));
     return vec3(p^(p >> 16U))*(1.0/vec3(0xffffffffU));
 }
@@ -278,7 +279,6 @@ vec3 bg(in vec3 rd)
 }
 //-----------------------------------------------------------
 
-uniform float iTime;
 void main(  )
 {
 	vec2 q = gl_FragCoord.xy / iResolution.xy;
