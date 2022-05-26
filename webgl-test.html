@@ -248,8 +248,8 @@ vec3 nmzHash33(vec3 q)
 {
     vec3 p = vec3(ivec3(q));
     p = p*vec3(374761393, 1103515245, 668265263) + p.zxy + p.yzx;
-    p = p.yzx*(p.zxy^(p >> 3U));
-    return vec3(p^(p >> 16U))*(1.0/vec3(0xffffffffU));
+    p = p.yzx*(p.zxy^(p >> 3));
+    return vec3(p^(p >> 16))*(1.0/vec3(0xffffffffU));
 }
 
 vec3 stars(in vec3 p)
