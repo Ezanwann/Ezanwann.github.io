@@ -629,7 +629,6 @@ vec2 GetDrops(vec2 uv, float seed, float m) {
 }
 //END RAIN STUFF
 
-out vec4 fragColor;
 //in vec2 fragCoord;
 
 void main(  ) {
@@ -731,7 +730,7 @@ void main(  ) {
     #endif
 
 	//float env = pow( smoothstep(.5, iResolution.x / iResolution.y, length(uv*0.8)), 0.0);
-	fragColor = vec4(pow(color, vec3(1.0/2.2)), 1.); //gamma correct
+	gl_FragColor = vec4(pow(color, vec3(1.0/2.2)), 1.); //gamma correct
 }
   </script>
   <script type="module">
