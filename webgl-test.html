@@ -188,6 +188,9 @@
 // https://www.shadertoy.com/view/XtGGRt
 
 // Sorry to those I've missed out!!
+uniform float t;
+uniform sampler2D iChannel10;
+
 
 #define ORIG_CLOUD 0
 #define ENABLE_RAIN 0 //enable rain drops on screen
@@ -624,7 +627,10 @@ vec2 GetDrops(vec2 uv, float seed, float m) {
 }
 //END RAIN STUFF
 
-void main( out vec4 fragColor, in vec2 fragCoord ) {
+out vec4 fragColor;
+//in vec2 fragCoord;
+
+void main(  ) {
 
 	float AR = iResolution.x/iResolution.y;
     float M = 1.0; //canvas.innerWidth/M //canvas.innerHeight/M --res
@@ -632,7 +638,7 @@ void main( out vec4 fragColor, in vec2 fragCoord ) {
     vec2 uvMouse = (iMouse.xy / iResolution.xy);
     uvMouse.x *= AR;
     
-   	vec2 uv0 = (fragCoord.xy / iResolution.xy);
+   	vec2 uv0 = (gl_fragCoord.xy / iResolution.xy);
     uv0 *= M;
 	//uv0.x *= AR;
     
@@ -729,7 +735,7 @@ void main( out vec4 fragColor, in vec2 fragCoord ) {
     // import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.121.1/build/three.module.js';
     // import { FBXLoader } from 'https://cdn.jsdelivr.net/npm/three@0.121.1/examples/jsm/loaders/FBXLoader.js';
     import { OrbitControls } from "https://cdn.jsdelivr.net/npm/three@0.121.1/examples/jsm/controls/OrbitControls.js";
-
+    var globTime = 0.0;
     class World {
       constructor() {
         //this.prop = prop;
@@ -947,6 +953,8 @@ void main( out vec4 fragColor, in vec2 fragCoord ) {
           mieCoefficient: { value: 0.005 },
           mieDirectionalG: { value: 0.8 },
           sunPosition: { value: new THREE.Vector3() },
+	  t: {value: globTime},
+	iChannel0: { type: "t", value: THREE.ImageUtils.loadTexture( "texture.jpg" ) }
         },
 
         vertexShader: document.querySelector("#vssky").textContent,
@@ -1478,6 +1486,7 @@ void main( out vec4 fragColor, in vec2 fragCoord ) {
       }
       function render() {
         var time = performance.now() * 0.001;
+	globTime += 0.5;
         if (doneInstantiate) {
           clearInterval(instantiateBalls);
         }
