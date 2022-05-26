@@ -190,7 +190,7 @@
 // Sorry to those I've missed out!!
 uniform float iTime;
 uniform sampler2D iChannel0;
-
+uniform vec2 iResolution;
 
 #define ORIG_CLOUD 0
 #define ENABLE_RAIN 0 //enable rain drops on screen
@@ -337,7 +337,9 @@ vec4 aurora(vec3 ro, vec3 rd)
 //END AURORA STUFF
 
 float noise(in vec2 v) { 
-    return textureLod(iChannel0, (v+.5)/256., 0.).r; 
+    //return textureLod(iChannel0, (v+.5)/256., 0.).r; 
+    return texture(iChannel0, (v+.5)/256.).r; 
+    
 }
 
 // by iq
