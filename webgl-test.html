@@ -188,7 +188,7 @@
 // https://www.shadertoy.com/view/XtGGRt
 
 // Sorry to those I've missed out!!
-uniform float t;
+uniform float iTime;
 uniform sampler2D iChannel10;
 
 
@@ -953,7 +953,7 @@ void main(  ) {
           mieCoefficient: { value: 0.005 },
           mieDirectionalG: { value: 0.8 },
           sunPosition: { value: new THREE.Vector3() },
-	  t: {value: globTime},
+	  iTime: {value: globTime},
 	iChannel0: { type: "t", value: THREE.ImageUtils.loadTexture( "texture.jpg" ) }
         },
 
