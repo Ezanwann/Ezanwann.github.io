@@ -709,7 +709,7 @@ void main(  ) {
     uv1 *=M;
     uv1.x *=AR;
     
-    vec3 sun2 = getAtmosphericScattering(uv1, vec2(uvMouse.x,uvMouse.y)) ;
+    vec3 sun2 = getAtmosphericScattering(uv1, vec2(uvMouse.x,uvMouse.y) + vec2(0, -10.)) ;
     color += sun2;
     #endif
     
