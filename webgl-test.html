@@ -705,7 +705,7 @@ void main(  ) {
 	//draw the badly implemented sun
     #if SIMPLE_SUN
     
-    vec2 uv1 = (fragCoord.xy / iResolution.xy);
+    vec2 uv1 = (gl_Fragcoord.xy / iResolution.xy);
     uv1 *=M;
     uv1.x *=AR;
     
