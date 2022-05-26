@@ -338,7 +338,7 @@ vec4 aurora(vec3 ro, vec3 rd)
 
 float noise(in vec2 v) { 
     //return textureLod(iChannel0, (v+.5)/256., 0.).r; 
-    return texture(iChannel0, (v+.5)/256.).r; 
+    return texture2D(iChannel0, (v+.5)/256.).r; 
     
 }
 
@@ -350,7 +350,7 @@ float Noise( in vec3 x )
 	f = f*f*(3.0-2.0*f);
 
 	vec2 uv = (p.xy+vec2(37.0,17.0)*p.z) + f.xy;
-	vec2 rg = texture( iChannel0, (uv+ 0.5)/256.0, -100.0).yx;
+	vec2 rg = texture2D( iChannel0, (uv+ 0.5)/256.0, -100.0).yx;
 	return mix( rg.x, rg.y, f.z );
 }
 
@@ -637,7 +637,7 @@ void main(  ) {
 	float AR = iResolution.x/iResolution.y;
     float M = 1.0; //canvas.innerWidth/M //canvas.innerHeight/M --res
     
-    vec2 uvMouse = (iMouse.xy / iResolution.xy);
+    vec2 uvMouse = (vec2(0, 0) / iResolution.xy);
     uvMouse.x *= AR;
     
    	vec2 uv0 = (gl_FragCoord.xy / iResolution.xy);
@@ -646,6 +646,7 @@ void main(  ) {
     
     vec2 uv = uv0 * (2.0*M) - (1.0*M);
     uv.x *=AR;
+    
     
   
     if (uvMouse.y == 0.) uvMouse.y=(0.7-(0.05*fov)); //initial view 
