@@ -63,14 +63,12 @@
     const float e = 2.71828182845904523536028747135266249775724709369995957;
     const float pi = 3.141592653589793238462643383279502884197169;
     const vec3 lambda = vec3( 680E-9, 550E-9, 450E-9 );
-    // replaces older TotalRayleigh(vec3 lambda) function:
     const vec3 totalRayleigh = vec3( 5.804542996261093E-6, 1.3562911419845635E-5, 3.0265902468824876E-5 );
 
 
     // K coefficient
     const float v = 4.0;
     const vec3 K = vec3( 0.686, 0.678, 0.666 );
-    // MieConst = pi * pow( ( 2.0 * pi ) / lambda, vec3( v - 2.0 ) ) * K
     const vec3 MieConst = vec3( 1.8399918514433978E14, 2.7798023919660528E14, 4.0790479543861094E14 );
     const float cutoffAngle = 1.6110731556870734;
     const float steepness = 1.5;
@@ -166,168 +164,12 @@
         gl_FragColor = vec4( retColor, 1.0 );
     }
   </script>
-  <script id="fragSky" type="x-shader/x-fragment">
-    // The sun, the sky and the clouds. By StillTravelling
-// https://www.shadertoy.com/view/tdSXzD
-// Very much a messy hack sorry!!
-
-// Many Thank yous go to the below for their amazing work
-// Day and night sky cycle. By László Matuska (@BitOfGold)
-// Creates a sky texture for a skydome
-// https://www.shadertoy.com/view/ltlSWB
-
-uniform float iTime;
-uniform vec2 iResolution;
-
-mat2 mm2(in float a){float c = cos(a), s = sin(a);return mat2(c,s,-s,c);}
-mat2 m2 = mat2(0.95534, 0.29552, -0.29552, 0.95534);
-float tri(in float x){return clamp(abs(fract(x)-.5),0.01,0.49);}
-vec2 tri2(in vec2 p){return vec2(tri(p.x)+tri(p.y),tri(p.y+tri(p.x)));}
-
-float triNoise2d(in vec2 p, float spd)
-{
-    float z=1.8;
-    float z2=2.5;
-	float rz = 0.;
-    p *= mm2(p.x*0.06);
-    vec2 bp = p;
-	for (float i=0.; i<5.; i++ )
-	{
-        vec2 dg = tri2(bp*1.85)*.75;
-        dg *= mm2(iTime*spd);
-        p -= dg/z2;
-
-        bp *= 1.3;
-        z2 *= .45;
-        z *= .42;
-		p *= 1.21 + (rz-1.0)*.02;
-        
-        rz += tri(p.x+tri(p.y))*z;
-        p*= -m2;
-	}
-    return clamp(1./pow(rz*29., 1.3),0.,.55);
-}
-
-float hash21(in vec2 n){ return fract(sin(dot(n, vec2(12.9898, 4.1414))) * 43758.5453); }
-vec4 aurora(vec3 ro, vec3 rd)
-{
-    vec4 col = vec4(0);
-    vec4 avgCol = vec4(0);
-    
-    for(float i=0.;i<50.;i++)
-    {
-        float of = 0.006*hash21(gl_FragCoord.xy)*smoothstep(0.,15., i);
-        float pt = ((.8+pow(i,1.4)*.002)-ro.y)/(rd.y*2.+0.4);
-        pt -= of;
-    	vec3 bpos = ro + pt*rd;
-        vec2 p = bpos.zx;
-        float rzt = triNoise2d(p, 0.06);
-        vec4 col2 = vec4(0,0,0, rzt);
-        col2.rgb = (sin(1.-vec3(2.15,-.5, 1.2)+i*0.043)*0.5+0.5)*rzt;
-        avgCol =  mix(avgCol, col2, .5);
-        col += avgCol*exp2(-i*0.065 - 2.5)*smoothstep(0.,5., i);
-        
-    }
-    
-    col *= (clamp(rd.y*15.+.4,0.,1.));
-    
-    
-    //return clamp(pow(col,vec4(1.3))*1.5,0.,1.);
-    //return clamp(pow(col,vec4(1.7))*2.,0.,1.);
-    //return clamp(pow(col,vec4(1.5))*2.5,0.,1.);
-    //return clamp(pow(col,vec4(1.8))*1.5,0.,1.);
-    
-    //return smoothstep(0.,1.1,pow(col,vec4(1.))*1.5);
-    return col*1.8;
-    //return pow(col,vec4(1.))*2.
-}
-
-
-//-------------------Background and Stars--------------------
-
-vec3 nmzHash33(vec3 q)
-{
-    vec3 p = vec3(ivec3(q));
-    p = p*vec3(374761393, 1103515245, 668265263) + p.zxy + p.yzx;
-    //p = p.yzx*(p.zxy^(p >> 3));
-    return vec3(p)*(1.0/vec3(0xffffffff));
-}
-
-vec3 stars(in vec3 p)
-{
-    vec3 c = vec3(0.);
-    float res = iResolution.x*1.;
-    
-	for (float i=0.;i<4.;i++)
-    {
-        vec3 q = fract(p*(.15*res))-0.5;
-        vec3 id = floor(p*(.15*res));
-        vec2 rn = nmzHash33(id).xy;
-        float c2 = 1.-smoothstep(0.,.6,length(q));
-        c2 *= step(rn.x,.0005+i*i*0.001);
-        c += c2*(mix(vec3(1.0,0.49,0.1),vec3(0.75,0.9,1.),rn.y)*0.1+0.9);
-        p *= 1.3;
-    }
-    return c*c*.8;
-}
-
-vec3 bg(in vec3 rd)
-{
-    float sd = dot(normalize(vec3(-0.5, -0.6, 0.9)), rd)*0.5+0.5;
-    sd = pow(sd, 5.);
-    vec3 col = mix(vec3(0.05,0.1,0.2), vec3(0.1,0.05,0.2), sd);
-    return col*.63;
-}
-//-----------------------------------------------------------
-
-void main(  )
-{
-	vec2 q = gl_FragCoord.xy / iResolution.xy;
-    vec2 p = q - 0.5;
-	p.x*=iResolution.x/iResolution.y;
-    
-    vec3 ro = vec3(0,0,-6.7);
-    vec3 rd = normalize(vec3(p,1.3));
-    vec2 mo = vec2(0,0) / iResolution.xy-.5;
-    mo = (mo==vec2(-.5))?mo=vec2(-0.1,0.1):mo;
-	mo.x *= iResolution.x/iResolution.y;
-    rd.yz *= mm2(mo.y);
-    rd.xz *= mm2(mo.x + sin(iTime*0.05)*0.2);
-    
-    vec3 col = vec3(0.);
-    vec3 brd = rd;
-    float fade = smoothstep(0.,0.01,abs(brd.y))*0.1+0.9;
-    
-    col = bg(rd)*fade;
-    
-    if (rd.y > 0.){
-        vec4 aur = smoothstep(0.,1.5,aurora(ro,rd))*fade;
-        col += stars(rd);
-        col = col*(1.-aur.a) + aur.rgb;
-    }
-    else //Reflections
-    {
-        rd.y = abs(rd.y);
-        col = bg(rd)*fade*0.6;
-        vec4 aur = smoothstep(0.0,2.5,aurora(ro,rd));
-        col += stars(rd)*0.1;
-        col = col*(1.-aur.a) + aur.rgb;
-        vec3 pos = ro + ((0.5-ro.y)/rd.y)*rd;
-        float nz2 = triNoise2d(pos.xz*vec2(.5,.7), 0.);
-        col += mix(vec3(0.2,0.25,0.5)*0.08,vec3(0.3,0.3,0.5)*0.7, nz2*0.4);
-    }
-    
-	gl_FragColor = vec4(col, 1.);
-}
-  </script>
+ 
   <script type="module">
-    // import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.121.1/build/three.module.js';
-    // import { FBXLoader } from 'https://cdn.jsdelivr.net/npm/three@0.121.1/examples/jsm/loaders/FBXLoader.js';
     import { OrbitControls } from "https://cdn.jsdelivr.net/npm/three@0.121.1/examples/jsm/controls/OrbitControls.js";
     var globTime = 0.0;
     class World {
       constructor() {
-        //this.prop = prop;
         this.m_World = new CANNON.World();
         this.m_World.gravity.set(0, -9.8, 0);
       }
@@ -442,7 +284,6 @@ void main(  )
       Update() {
         let boxscale = this.m_scale;
 
-        //this.m_mesh.scale.set(...boxscale);
 
         this.m_mesh.useQuaternion = true;
         this.m_mesh.position.x = this.m_body.position.x;
@@ -737,7 +578,6 @@ void main(  )
             "    vec3 outgoingLight = albedo;",
             "    gl_FragColor = vec4( outgoingLight, alpha );",
 
-            //THREE.ShaderChunk[ 'tonemapping_fragment' ],
             THREE.ShaderChunk["fog_fragment"],
 
             "}",
@@ -853,10 +693,8 @@ void main(  )
             (1.0 + projectionMatrix.elements[10]) /
             projectionMatrix.elements[14];
 
-          // Calculate the scaled plane vector
           clipPlane.multiplyScalar(2.0 / clipPlane.dot(q));
 
-          // Replacing the third row of the projection matrix
           projectionMatrix.elements[2] = clipPlane.x;
           projectionMatrix.elements[6] = clipPlane.y;
           projectionMatrix.elements[10] = clipPlane.z + 1.0 - clipBias;
@@ -864,7 +702,6 @@ void main(  )
 
           eye.setFromMatrixPosition(camera.matrixWorld);
 
-          //
 
           var currentRenderTarget = renderer.getRenderTarget();
 
@@ -873,8 +710,8 @@ void main(  )
 
           scope.visible = false;
 
-          renderer.vr.enabled = false; // Avoid camera modification and recursion
-          renderer.shadowMap.autoUpdate = false; // Avoid re-computing shadows
+          renderer.vr.enabled = false; 
+          renderer.shadowMap.autoUpdate = false;
 
           renderer.setRenderTarget(renderTarget);
           renderer.clear();
@@ -901,14 +738,11 @@ void main(  )
       animate();
       function init() {
         container = document.getElementById("container");
-        //
         renderer = new THREE.WebGLRenderer();
         renderer.setPixelRatio(window.devicePixelRatio);
         renderer.setSize(window.innerWidth, window.innerHeight);
         container.appendChild(renderer.domElement);
-        //
         scene = new THREE.Scene();
-        //
         camera = new THREE.PerspectiveCamera(
           75,
           window.innerWidth / window.innerHeight,
@@ -916,10 +750,8 @@ void main(  )
           20000
         );
         camera.position.set(20, 150, 700);
-        //
-        light = new THREE.DirectionalLight(0xffffff, 0.8);
+        light = new THREE.DirectionalLight(0xffb347, 0.8);
         scene.add(light);
-        // Water
 
         var waterGeometry = new THREE.PlaneBufferGeometry(10000, 10000);
         water = new THREE.Water(waterGeometry, {
@@ -940,7 +772,6 @@ void main(  )
         });
         water.rotation.x = -Math.PI / 2;
         scene.add(water);
-        // Skybox
         var sky = new THREE.Sky();
         var uniforms = sky.material.uniforms;
         uniforms["turbidity"].value = 15;
@@ -963,7 +794,7 @@ void main(  )
           var phi = 2 * Math.PI * (parameters.azimuth - 0.5);
           light.position.x = parameters.distance * Math.cos(phi);
           light.position.y =
-            parameters.distance * Math.sin(phi) * Math.sin(theta);
+            parameters.distance * Math.sin(globTime) * Math.sin(theta);
           light.position.z =
             parameters.distance * Math.sin(phi) * Math.cos(theta);
           sky.material.uniforms["sunPosition"].value = light.position.copy(
@@ -975,7 +806,7 @@ void main(  )
           cubeCamera.update(renderer, sky);
         }
         updateSun();
-        //
+        
         var geometry = new THREE.SphereGeometry(10, 20, 20);
         /*var count = geometry.attributes.position.count;
                 var colors = [];
