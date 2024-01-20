@@ -327,7 +327,7 @@
       gBalls.push(ballB);
 
       gWorld.Add(ballA);
-      let planeA = new Box([-1000, 20, 1000], [0, 0, 0], [500, 200, 500]);
+      let planeA = new Box([-200, 20, 200], [0, 0, 0], [500, 200, 500]);
       planeA.ChangeMat(matb);
       planeA.CreateGeo();
       planeA.Draw(scene);
@@ -347,7 +347,7 @@
       gPlanes.push(planeB);
 
       const spotLight = new THREE.SpotLight(0x8ed5ff);
-      spotLight.intensity = 0.7;
+      spotLight.intensity = 0.9;
       spotLight.position.set(-300, 1000, -500);
       spotLight.castShadow = true;
       spotLight.shadow.mapSize.width = 1024;
@@ -753,7 +753,7 @@
         light = new THREE.DirectionalLight(0xffb347, 0.8);
         scene.add(light);
 
-        var waterGeometry = new THREE.PlaneBufferGeometry(10000, 10000);
+        var waterGeometry = new THREE.PlaneBufferGeometry(100000, 100000);
         water = new THREE.Water(waterGeometry, {
           textureWidth: 512,
           textureHeight: 512,
