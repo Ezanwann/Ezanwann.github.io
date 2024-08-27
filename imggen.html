@@ -169,7 +169,7 @@ let o="0123456789";
           st+=o[Math.floor(Math.random()*10)]
         let a =document.createElement('a');
         a.href=el.src;
-        a.download=prompt.value+st+".jpg";
+        a.download=p.value+st+".jpg";
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
