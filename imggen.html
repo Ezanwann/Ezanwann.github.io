@@ -1,11 +1,25 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Page Title</title>
+        <title>Instant Image Gen-Wann</title>
+        <style>
+            * {
+    padding:0;
+    margin:0;
+}
+
+body{
+    width:100vw;
+}
+
+#myimg{
+    width:100%;
+}
+        </style>
     </head>
     <body>
     <h4>Instant AI image generation, developed by wann</h2>
-        <img id="myimg" alt="result here">
+        <img id="myimg" alt="result here" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/1200px-No_image_available.svg.png">
         <textarea id="prompt"></textarea>
         <button id="change">Vary</button>
         <button id="dl">Download photo</button>
@@ -164,12 +178,12 @@ let o="0123456789";
     }
     
     dl.onclick=e=>{
-        let st="";
+              let st="";
         for(let i=0;i<5;++i){
           st+=o[Math.floor(Math.random()*10)];}
         let a =document.createElement('a');
         a.href=el.src;
-        a.download=p.value+st;
+        a.download="img.jpg";
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
