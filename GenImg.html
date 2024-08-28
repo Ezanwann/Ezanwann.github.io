@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
+    <meta name = "viewport" content = "width=device-width, initial-scale=1.0"/> 
     <head>
         <title>Img Ai</title>
-        <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+        <meta name = "viewport" content = "width=device-width, initial-scale=1.0"/>
     </head>
     <body>
     <h4>Instant AI image generation, developed by Wann° H</h2>
@@ -18,7 +19,7 @@
 
     <canvas id="canvas" style="display:none;"></canvas>
     <br>
-    <a id="download" href="#" download="converted.png">Download PNG</a>
+    <button id="delImg">Delete input</button>
 
     
         
@@ -210,6 +211,7 @@ let sid="24659";
 let pv="";
 let o="0123456789";
 let gb="";
+let gbh="";
 
 // Example usage
 
@@ -245,14 +247,14 @@ let gb="";
                  ls="00"+ls;
              }
                console.log(dm1);
-             console.log(ls) ;       ee=df1+dm1+ls+tth(gb)+dm2+df2+dx2+df3
+             console.log(ls) ;       ee=df1+dm1+ls+gbh+dm2+df2+dx2+df3
             console.log(gb.length);
 console.log(gb);
         }
        // copyToClipboard(gb)
         //console.log(ls)
         let fp=ds1+sidh+ds2+h+ee;
-       // fp=ds1+sidh+ds2+h+df1+dm1+ls+tth(gbd)+dm2+df2+dx2+df3;
+       // fp=ds1+sidh+ds2+h+df1+dm1+ls+gbh+dm2+df2+dx2+df3;
         //fp=uu
       // console.log(sidh)
         if (ws && ws.readyState === WebSocket.OPEN) {
@@ -315,6 +317,7 @@ console.log(gb);
                     // Convert canvas to PNG
                     const pngUrl = canvas.toDataURL('image/png');
                     gb=pngUrl;
+                    gbh=tth(pngUrl);
               }
               img.src=e.target.result;
                     
@@ -326,10 +329,17 @@ console.log(gb);
     }
 });
 
+document.getElementById("delImg).onclick=function(e){
+document.getElementById('imagePreview').src="";
+document.getElementById('imageUrl').value="";
+gb="";
+gbh="";
+}
 
 
 document.getElementById('fetchImage').addEventListener('click', async function() {
-            gb="";
+           // gb="";
+           // gbh="";
             const url = document.getElementById('imageUrl').value;
             if (!url) {
                 alert('Please enter an image URL');
