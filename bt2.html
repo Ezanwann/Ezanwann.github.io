@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Page Title</title>
+    </head>
+    <body>
+        <textarea class="inp"></textarea>
+        <button class="getinp">Go</button>
+        <textarea class="res"></textarea>
+        <button class="copyres">Copy</button>
+    </body>
+    <script>
+        onclick = e => {
+
+//[{"x2y3":{
+//    x:2,y:3,start:false,isVisited:false,end:false
+//}}]
+
+    function bt2(arr,c,r,orr){
+        c.isVisited=true;
+        r.push({x:c.x,y:c.y});
+        if (c.end) {
+           console.log("found") 
+           if(orr.length<r.length)orr=[...r]
+        return orr;
+        
+        }
+        let nbs = findNb(arr,c);
+        let b=false;
+        for (let nb of nbs) {
+            orr=bt2(arr,nb,r,orr);
+        }
+        c.isVisited=false;
+        r.pop();
+        return orr;
+    }
+
+    function bt(arr,c,r){
+        c.isVisited=true;
+        r.push({x:c.x,y:c.y});
+        if (c.end) {
+           console.log("found") 
+        return true;
+        
+        }
+        let nbs = findNb(arr,c);
+        let b=false;
+        for (let nb of nbs) {
+            return bt(arr,nb,r);
+        }
+        c.isVisited=false;
+        r.pop();
+        return false;
+    }
+    
+    function findNb(arr,k){
+        let nbs=[];
+        let n=[];
+        n.push(getKt(arr,k,-1,-1));
+        n.push(getKt(arr,k,0,-1));
+        n.push(getKt(arr,k,1,-1));
+        n.push(getKt(arr,k,-1,0));
+        n.push(getKt(arr,k,1,0));
+        n.push(getKt(arr,k,-1,1));
+        n.push(getKt(arr,k,0,1));
+        n.push(getKt(arr,k,1,1));
+        for (let i of n){
+            if (i!=null) nbs.push(i);
+        }
+       // console.log("nb length:"+nbs.length)
+        return nbs;
+    }
+    
+    function getKt(arr,k,i,j){
+        let x=k.x+i;
+        let y=k.y+j;
+        let s="x"+x+"y"+y;
+        //let j=arr[s];
+       // console.log(s)
+        if(!(s in arr))return null;
+        if(arr[s].isVisited||arr[s].start)return null;
+        return arr[s];
+    }
+    
+    let inp=document.querySelector(".inp");
+    let getinp=document.querySelector(".getinp");
+    let res=document.querySelector(".res");
+    let copyres=document.querySelector(".copyres");
+    
+    getinp.onclick=function(){
+        let v=inp.value;
+        
+        //console.log(v)
+        let r=JSON.parse(v);
+        console.log(Object.keys(r).length)
+        let fr=[];
+        let frb=[];
+        r["x33y55"].start=true;
+        r["x42y58"].end=true;
+        frb=bt2(r,r["x39y54"],fr,frb);
+        console.log("fr length:"+frb.length)
+        res.value="["
+        for(let i of frb){
+            res.value=res.value+"{x:"+i.x+",y:"+i.y+"},"
+        }
+        res.value=res.value.slice(0,res.value.length-1)+"]"
+       // console.log()
+    }
+    copyres.onclick=function(){
+        ctc();
+    }
+    function ctc(){      
+            res.select()
+            res.setSelectionRange(0, 999999)
+            document.execCommand("copy")
+            console.log("copied")
+            res.blur()
+            
+    }
+    
+    
+}
+    </script>
+</html>
