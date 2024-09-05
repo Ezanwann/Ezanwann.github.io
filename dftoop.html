@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Page Title</title>
+    </head>
+    <body>
+        
+    </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.10.0/p5.min.js"></script>
+    <script> //NOTE:YOU CAN SORT THE CIRCLES BASED ON RADIUS FROM BIGGER TO SMALLER SO IT LOOKS NEATER
+    
+        let square = function(){
+            let inp=[]
+            for(let j=0;j<4;++j){
+            let isRight=false;
+            let isDown=false;
+            for (let i=0;i<50;++i){
+                let x,y;
+                if(!isRight){
+                    x=i;
+                }else{
+                    x=50-i;
+                }
+                if(!isDown){
+                    y=i
+                }else{
+                    y=50-i;
+                }
+                
+                inp.push({x:x,y:y});
+            }
+            if(!isRight){
+                isRight=true;
+            }
+            }
+            return inp
+        }
+        
+        let loveShape=function(){
+        let inp=[]
+        for(let i =0;i<360;++i){
+            
+                let petalSize =50
+                let t = i * (Math.PI / 180); 
+                let x = 16 * Math.sin(t) ** 3; 
+                let y = 13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t);
+                inp.push({x:x*10,y:y*-10})
+                }
+                return inp;
+        }
+        
+        let mg=function(){
+           let d= [{x:39,y:54},{x:39,y:53},{x:39,y:52},{x:39,y:51},{x:39,y:50},{x:39,y:49},{x:39,y:48},{x:39,y:47},{x:39,y:46},{x:39,y:45},{x:39,y:44},{x:40,y:43},{x:40,y:42},{x:40,y:41},{x:40,y:40},{x:40,y:39},{x:40,y:38},{x:41,y:37},{x:41,y:36},{x:41,y:35},{x:41,y:34},{x:42,y:33},{x:42,y:32},{x:42,y:31},{x:42,y:30},{x:43,y:29},{x:43,y:28},{x:44,y:27},{x:44,y:26},{x:45,y:25},{x:45,y:24},{x:46,y:23},{x:47,y:23},{x:48,y:22},{x:49,y:23},{x:50,y:23},{x:50,y:24},{x:50,y:25},{x:51,y:25},{x:51,y:26},{x:51,y:27},{x:51,y:28},{x:51,y:29},{x:51,y:30},{x:51,y:31},{x:51,y:32},{x:51,y:33},{x:51,y:34},{x:52,y:34},{x:53,y:33},{x:54,y:32},{x:55,y:31},{x:56,y:30},{x:57,y:29},{x:58,y:28},{x:59,y:28},{x:60,y:28},{x:61,y:28},{x:61,y:29},{x:62,y:29},{x:62,y:30},{x:62,y:31},{x:62,y:32},{x:61,y:33},{x:62,y:33},{x:61,y:34},{x:61,y:35},{x:61,y:36},{x:60,y:37},{x:61,y:37},{x:60,y:38},{x:60,y:39},{x:60,y:40},{x:60,y:41},{x:60,y:42},{x:60,y:43},{x:60,y:44},{x:60,y:45},{x:60,y:46},{x:61,y:46},{x:60,y:47},{x:61,y:47},{x:60,y:48},{x:60,y:49},{x:60,y:50},{x:59,y:51},{x:59,y:52},{x:59,y:53},{x:59,y:54},{x:60,y:54},{x:60,y:55},{x:60,y:56},{x:61,y:56},{x:61,y:57},{x:61,y:58},{x:62,y:58},{x:62,y:59},{x:62,y:60},{x:62,y:61},{x:62,y:62},{x:61,y:63},{x:62,y:63},{x:61,y:64},{x:61,y:65},{x:60,y:66},{x:60,y:67},{x:59,y:68},{x:58,y:69},{x:57,y:70},{x:56,y:70},{x:55,y:71},{x:54,y:71},{x:53,y:71},{x:52,y:71},{x:51,y:70},{x:50,y:70},{x:49,y:69},{x:48,y:68},{x:47,y:67},{x:46,y:66},{x:45,y:66},{x:44,y:65},{x:43,y:65},{x:42,y:64},{x:41,y:63}]
+           return d;
+        }
+        
+        let objF = function(p) {
+            this.p=p;
+            this.scns=[];
+            this.cns=[];
+            this.inp=[];
+            this.gl=[];
+            this.ct=0;
+            this.ctm=1;
+            this.S=0;
+            this.ix=0;
+            this.iy=0;
+            
+            this.setIxy=function(x,y){
+                //this.gl[0]={x:0,y:0};
+                this.ix=x;
+                this.iy=y;
+            }
+            
+            this.init=function(f){
+                this.inp=f();
+                this.S=this.inp.length;
+                this.invFourier();
+            }
+            
+            this.invFourier = function(){
+              // console.log(this.inp.length)
+               for(let i=0;i<this.S;++i) invFourier(this.cns,this.inp,i,this.S,this.p)
+               console.log(this.cns.length)
+            }
+            
+            this.run=function(){
+                this.p.translate(this.ix,this.iy);
+                let {x,y}=calcFourierSort(this.cns,this.ct,this.S,this.scns,this.p);
+                this.gl.push({x,y});
+               // console.log(this.gl.length)
+                
+                drawAllLine(this.gl,this.p);
+                this.ct=this.ct+(1*this.ctm);
+                if(this.ct>this.S)this.ct=0;
+                if(this.gl.length>this.S*2)this.gl=[];
+                this.scns=[];
+                this.p.translate(-this.ix,-this.iy);
+            }
+        }
+        
+    
+        let CN = function (r,i) {
+            this.i=i;
+            this.r=r;
+            
+            this.add=function(ocn){
+                return new CN(this.r+ocn.r, this.i+ocn.i);
+            }
+            
+            this.multiply=function(ocn){
+                let r =new CN(0,0);
+                r.r=this.r*ocn.r-this.i*ocn.i;
+                r.i=this.r*ocn.i+this.i*ocn.r;
+                return r;
+            }
+        }
+        
+        let invFourier = function(cns,inp,t,N,p) {
+            let r = new CN(0,0);
+            for (let i=0;i<N;++i){
+                let c = new CN(0,0);
+                c.r = p.cos(p.TWO_PI*i*t/N);
+                c.i = p.sin(p.TWO_PI*i*t/N);
+                let inpc = new CN(inp[i].x,inp[i].y);
+                c=c.multiply(inpc);
+                r=r.add(c)
+            }
+            r.r/=N;
+            r.i/=N;
+            cns[t]=r;
+        }
+        
+        let fourier = function(cns,inp,t,N,p) {
+            let r = new CN(0,0);
+            for (let i=0;i<N;++i) {
+                let c = new CN(0,0);
+                c.r = p.cos(p.TWO_PI*i*t/N);
+                c.i = -p.sin(p.TWO_PI*i*t/N);
+                c=c.multiply(cns[i]);
+                r=r.add(c);
+            }
+            return r;
+        }
+        
+        let calcFourier = function(cns,t,N,l,p){
+            let x=0;
+            let y=0;
+            let prevx=0;
+            let prevy=0;
+            let r=null;
+            for (let i=0;i<N;++i){
+                let c = new CN(0,0);
+                c.r = p.cos(p.TWO_PI*i*t/N);
+                c.i = -p.sin(p.TWO_PI*i*t/N);
+                c=c.multiply(cns[i]);
+                x+=c.r;
+                y+=c.i;
+                drawLine(prevx,prevy,x,y,p);
+                drawCircle(prevx,prevy,c,p);
+                prevx+=c.r;
+                prevy+=c.i;
+                
+                r=c;
+            }
+            return {x,y}
+        }
+        
+        let findMag=function(c){
+            return Math.sqrt(c.r*c.r+c.i*c.i)
+        }
+        
+        let calcFourierSort = function(cns,t,N,l,p){
+            let x=0;
+            let y=0;
+            let prevx=0;
+            let prevy=0;
+            let r=null;
+            for (let i=0;i<N;++i){
+                let c = new CN(0,0);
+                c.r = p.cos(p.TWO_PI*i*t/N);
+                c.i = -p.sin(p.TWO_PI*i*t/N);
+                c=c.multiply(cns[i]);
+                l.push(c)
+            }
+            l.sort((a,b)=>{
+                //console.log("sort")
+                return findMag(b)-findMag(a);
+            })
+            
+            for (let i=0;i<N;++i){
+                x+=l[i].r;
+                y+=l[i].i;
+                drawLine(prevx,prevy,x,y,p);
+                drawCircle(prevx,prevy,l[i],p);
+                prevx+=l[i].r;
+                prevy+=l[i].i;
+                
+                r=l;
+            }
+            return {x,y}
+        }
+        
+        let drawLine = function(x,y,nx,ny,p){
+            p.line(x,y,nx,ny);
+        }
+        
+        let drawCircle=function(x,y,r,p){
+            let mag=r.r*r.r+r.i*r.i;
+            mag=p.sqrt(mag);
+            p.fill(p.color("green"))
+            p.noFill()
+           // console.log("19")
+            p.circle(x,y,mag*2);
+        }
+        
+        let drawAllLine=function(gl,p){
+            for (let i=0;i<gl.length-1;++i){
+                p.line(gl[i].x,gl[i].y,gl[i+1].x,gl[i+1].y)
+            }
+        }
+    
+        const ms = function(p) {
+        
+            
+            
+            let objFa=new objF(p);
+            let objFb=new objF(p);
+            p.setup=()=>{
+                p.createCanvas(400,400);
+                
+                objFa.init(loveShape);
+                objFa.setIxy(200,200)
+                
+                objFb.init(mg);
+                objFb.setIxy(200,200)
+            };
+            
+            
+            
+            p.draw=()=>{
+                p.background(125);
+                objFa.run();
+                objFb.run();
+            }
+        }
+        new p5(ms)
+    </script>
+</html>
