@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Page Title</title>
+    </head>
+    <body>
+        <textarea class="inp"></textarea>
+        <button class="getinp">Go</button>
+        <textarea class="res"></textarea>
+        <button class="copyres">Copy</button>
+    </body>
+    <script>
+        onclick = e => {
+
+//[{"x2y3":{
+//    x:2,y:3,start:false,isVisited:false,end:false
+//}}]
+     
+    function bt2(orr,arr,c,r){
+        c.isVisited=true;
+        r.push({x:c.x,y:c.y});
+        
+        let nbs = findNb(arr,c);
+        //let b=false;
+        for (let nb of nbs) {
+             orr=bt2(orr,arr,nb,r);
+        }
+        c.isVisited=false;
+        if(orr.length<r.length)orr=[...r];
+        
+        r.pop();
+        return orr;
+    }
+
+    function bt(arr,c,r){
+        c.isVisited=true;
+        r.push({x:c.x,y:c.y});
+        if (c.end) {
+           console.log("found") 
+        return true;
+        
+        }
+        let nbs = findNb(arr,c);
+        let b=false;
+        for (let nb of nbs) {
+            return bt(arr,nb,r);
+        }
+        c.isVisited=false;
+        r.pop();
+        return false;
+    }
+    
+    function findNb(arr,k){
+        let nbs=[];
+        let n=[];
+        n.push(getKt(arr,k,-1,-1));
+        n.push(getKt(arr,k,0,-1));
+        n.push(getKt(arr,k,1,-1));
+        n.push(getKt(arr,k,-1,0));
+        n.push(getKt(arr,k,1,0));
+        n.push(getKt(arr,k,-1,1));
+        n.push(getKt(arr,k,0,1));
+        n.push(getKt(arr,k,1,1));
+        for (let i of n){
+            if (i!=null) nbs.push(i);
+        }
+       // console.log("nb length:"+nbs.length)
+        return nbs;
+    }
+    
+    function getKt(arr,k,i,j){
+        let x=k.x+i;
+        let y=k.y+j;
+        let s="x"+x+"y"+y;
+        //let j=arr[s];
+       // console.log(s)
+        if(!(s in arr))return null;
+        if(arr[s].isVisited||arr[s].start)return null;
+        return arr[s];
+    }
+    
+    let inp=document.querySelector(".inp");
+    let getinp=document.querySelector(".getinp");
+    let res=document.querySelector(".res");
+    let copyres=document.querySelector(".copyres");
+    let frg=[];
+    
+    getinp.onclick=function(){
+        let v=inp.value;
+        
+        //console.log(v)
+        let r=JSON.parse(v);
+        console.log(Object.keys(r).length)
+        let fr=[];
+        let frb=[];
+        //r[Object.keys(r)[0]].start=true;
+       // r[Object.keys(r)[Object.keys(r).length-1]].end=true;
+        let ks=Object.keys(r);
+        let ksl=ks.length;
+        for(let k of ks){
+            frb=[];
+            fr=[];
+            r[k].start=true;
+            frb=bt2(frb,r,r[k],fr);
+            //console.log(k)
+            if(frb.length>frg.length)frg=[...frb];
+        }
+        console.log("r length:"+ksl)
+        console.log("frg length:"+frg.length)
+        res.value="["
+        for(let i of frg){
+            res.value=res.value+"{x:"+i.x+",y:"+i.y+"},"
+        }
+        res.value=res.value.slice(0,res.value.length-1)+"]"
+       // console.log()
+    }
+    copyres.onclick=function(){
+        ctc();
+    }
+    function ctc(){      
+            res.select()
+            res.setSelectionRange(0, 999999)
+            document.execCommand("copy")
+            console.log("copied")
+            res.blur()
+            
+    }
+    
+    
+}
+    </script>
+</html>
