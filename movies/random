@@ -1,7 +1,7 @@
 [
     {
         "name": "Polis evo 3",
-        "category": "movie",
+        "category": "movies/random",
         "info": {
             "poster": "https://image.tmdb.org/t/p/w185/6w7vApBT34Kb6B7ITxs45l9gswx.jpg",
             "bg": "https://image.tmdb.org/t/p/w185/6w7vApBT34Kb6B7ITxs45l9gswx.jpg",
