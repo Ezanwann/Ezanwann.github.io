@@ -1,1 +1,25 @@
-https://jk769sd.cloudatacdn.com/u5kj7htxgdclsdgge72omicbdq7fo5ue6lagseil6stz2j6kc3eqh7eck2sa/e2v8y1tiwk~Qvwpn9LeGJ?token=qrzlhf4w40lty8aaay84kgot&expiry=1725625820313
+[
+    {
+        "name": "Zim",
+        "category": "movie",
+        "info": {
+            "poster": "https://image.tmdb.org/t/p/w185/6w7vApBT34Kb6B7ITxs45l9gswx.jpg",
+            "bg": "https://image.tmdb.org/t/p/w185/6w7vApBT34Kb6B7ITxs45l9gswx.jpg",
+            "plot": ".",
+            "backdrop": "https://image.tmdb.org/t/p/w185/6w7vApBT34Kb6B7ITxs45l9gswx.jpg",
+            "director": [
+                "."
+            ],
+            "cast": [
+                "Awie",
+                "Azlan Komeng"
+            ],
+            "year": "2024"
+        },
+        "video": "https://jk769sd.cloudatacdn.com/u5kj7htxgdclsdgge72omicbdq7fo5ue6lagseil6stz2j6kc3eqh7eck2sa/e2v8y1tiwk~Qvwpn9LeGJ?token=qrzlhf4w40lty8aaay84kgot&expiry=1725625820313",
+        "headers": {
+            "Referer": "https://dood.li/"
+        }
+    }
+]
+
