@@ -1,0 +1,29 @@
+[
+    {
+        "name": "Li Test2 (2024)",
+        "category": "PencuriMovie",
+        "info": {
+            "poster": "https://image.tmdb.org/t/p/w185/6w7vApBT34Kb6B7ITxs45l9gswx.jpg",
+            "bg": "https://image.tmdb.org/t/p/w185/6w7vApBT34Kb6B7ITxs45l9gswx.jpg",
+            "plot": "Luka, a young man from the settlement area, grew up surrounded by unhealthy elements such as drug addiction, prostitution and gangsterism. Despite coming from such a background, Luka tries to live a normal life. He has a conflict with Bono since they were teenagers when Bono and his gang tried to blackmail his mother`s stall. Luka refuses to accept injustices and will always help whenever he can but the cards are stacked against him. He begins to rebel against the wrongs that are happening around him.",
+            "backdrop": "https://image.tmdb.org/t/p/w185/6w7vApBT34Kb6B7ITxs45l9gswx.jpg",
+            "director": [
+                "Awie"
+            ],
+            "cast": [
+                "Awie",
+                "Azlan Komeng",
+                "Ben Amir",
+                "Jesse Lim",
+                "MK K-Clique",
+                "Nor Albaniah",
+                "Shiqin Kamal"
+            ],
+            "year": "2024"
+        },
+        "video": "https://rie172l.cloudatacdn.com/u5kjvguw33dlsdgge7mbajkfjpiqqeuniqnd24suyb2km5iywgqawbuu7nkq/i52t0fcjgz~csSSYaKeE5?token=6c5f7qm60rl2b9kr4bycaoq7&expiry=1725623696556",
+        "headers": {
+            "Referer": "https://dood.li/"
+        }
+    }
+]
