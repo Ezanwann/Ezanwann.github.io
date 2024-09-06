@@ -1,0 +1,25 @@
+[
+    {
+        "name": "Polis evo 3",
+        "category": "movie",
+        "info": {
+            "poster": "https://image.tmdb.org/t/p/w185/6w7vApBT34Kb6B7ITxs45l9gswx.jpg",
+            "bg": "https://image.tmdb.org/t/p/w185/6w7vApBT34Kb6B7ITxs45l9gswx.jpg",
+            "plot": ".",
+            "backdrop": "https://image.tmdb.org/t/p/w185/6w7vApBT34Kb6B7ITxs45l9gswx.jpg",
+            "director": [
+                "."
+            ],
+            "cast": [
+                "Awie",
+                "Azlan Komeng"
+            ],
+            "year": "2024"
+        },
+        "video": "https://mc289i.cloudatacdn.com/u5kj7grhu7d3sdgge72r2jaojyg3kpzewi4g3nuahk35sze7d7h4e3cr4peq/dfeh5euadx~PVVbtWzq4i?token=zb4f3r8z2p6f0w71jvuo62d0&expiry=1725627578881",
+        "headers": {
+            "Referer": "https://dood.li/"
+        }
+    }
+]
+
