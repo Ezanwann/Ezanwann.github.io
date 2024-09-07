@@ -23,7 +23,7 @@
         },
         "video": "https://web.telegram.org/a/progressive/document5969587470050792831",
         "headers": {
-            "Referer": "https://dood.li/"
+            "Referer": "https://web.telegram.org/a/"
         }
     }
 ]
