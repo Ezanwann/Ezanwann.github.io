@@ -23,7 +23,10 @@
         },
         "video": "https://web.telegram.org/a/progressive/document5969587470050792831",
         "headers": {
-            "Referer": "https://web.telegram.org/a/"
+            "Referer": "https://web.telegram.org/a/",
+           "sec-ch-ua": "\"Not-A.Brand\";v=\"99\", \"Chromium\";v=\"124\"",
+    "sec-ch-ua-mobile": "?1",
+    "sec-ch-ua-platform": "\"Android\""
         }
     }
 ]
