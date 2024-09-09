@@ -1,6 +1,6 @@
 [
     {
-        "name": "Test)",
+        "name": "hhh)",
         "category": "PencuriMovie",
         "info": {
             "poster": "https://image.tmdb.org/t/p/w185/6w7vApBT34Kb6B7ITxs45l9gswx.jpg",
@@ -23,6 +23,7 @@
         },
         "video": "https://web.telegram.org/a/progressive/document5969587470050792831",
         "headers": {
+            "Referrer-policy":"strict-origin-when-cross-origin",
             "Referer": "https://web.telegram.org/a/",
            "sec-ch-ua": "\"Not-A.Brand\";v=\"99\", \"Chromium\";v=\"124\"",
     "sec-ch-ua-mobile": "?1",
