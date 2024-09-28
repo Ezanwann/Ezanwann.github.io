@@ -2,8 +2,9 @@
 <html>
     <head>
         <title>Page Title</title>
-<style>
-body {
+        <style>
+            
+            body {
     
 }
 
@@ -24,15 +25,21 @@ body {
 .g{
     background:green;
 }
-</style>
+        </style>
     </head>
     <body>
         <button id="done">Done</button>
-        <textarea id="res"></textarea>
+        <br/>
+        <textarea id="res" placeholder="res"></textarea>
+        
         <button id="cpres">Copy</button>
-        <textarea id="inp" placeholder="inp"></textarea>
-        <button id="cpresspl">Copy Spl</button>
-        <textarea id="inpspl" placeholder="inpspl"></textarea>
+       
+        <br/>
+        <textarea id="resspl" placeholder="resspl"></textarea>
+        
+        <button id="cpresspl">Copy spl</button>
+        <br/>
+         <textarea id="inp" placeholder="inp"></textarea>
         <button id="binp">Start</button>
         <div id="par"></div>
     </body>
@@ -107,8 +114,8 @@ body {
         let bdone=document.querySelector("#done");
         let tares=document.querySelector("#res");
         let cpres=document.querySelector("#cpres");
-        let taresspl=document.querySelector("#res");
-        let cpresspl=document.querySelector("#cpres");
+        let taresspl=document.querySelector("#resspl");
+        let cpresspl=document.querySelector("#cpresspl");
         let tinp=document.querySelector("#inp");
         let binp=document.querySelector("#binp");
      /*   for (let data of datas){
