@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Page Title</title>
+    </head>
+    <body>
+        <button id="done">Done</button>
+        <textarea id="res"></textarea>
+        <button id="cpres">Copy</button>
+        <textarea id="inp" placeholder="inp"></textarea>
+        <button id="cpresspl">Copy Spl</button>
+        <textarea id="inpspl" placeholder="inpspl"></textarea>
+        <button id="binp">Start</button>
+        <div id="par"></div>
+    </body>
+    <script>
+        const W=10;
+        const H=W;
+        const WG=.5;
+        const HG=WG;
+        
+        
+        let pp=JSON.parse("[{\"r\":12}]")
+       // console.log(pp.length)
+        
+        let res =[];
+        let resspl=[]
+        function cf(e){
+            let d=e.target;
+            let sel=d.dataset.sel;
+            //console.log(sel)
+            if(d.dataset.sel==0){
+                let ii=res.length;
+                res.push({
+                    el:d,
+                    x:d.dataset.x,
+                    y:d.dataset.y,
+                    i:ii
+                });
+                d.dataset.i=ii;
+                d.dataset.sel=1;
+                d.classList.remove("y");
+                d.classList.add("g");
+            } else {
+                //console.log("false"+sel)
+                let b=prompt("Want to delete");
+                if(b){
+                    let ii=d.dataset.i;
+                    for(let j=ii;j<res.length;++j){
+                    let ce=res[j].el;
+                   // console.log(j);
+                        ce.classList.remove("g");
+                    ce.classList.add("y");
+                    ce.dataset.sel=0;
+                    }
+                    res=res.slice(0,ii);
+                    
+                    
+                }
+            }
+        }
+        
+        function cdiv(o,p){
+            let d=document.createElement("div");
+            d.style.position="absolute";
+            let x=o.x*W+(o.x)*WG;
+            let y=o.y*H+o.y*HG;
+            d.style.top=y+"px";
+            d.style.left=x+"px";
+            d.dataset.sel=0;
+            d.dataset.x=o.x;
+            d.dataset.y=o.y;
+            d.dataset.i=-1;
+            d.classList.add("y");
+            d.classList.add("div");
+            d.onclick=cf;
+            p.appendChild(d);
+        }
+        
+        let inpdatas=null;
+        
+        
+        let par=document.querySelector("#par");
+        let bdone=document.querySelector("#done");
+        let tares=document.querySelector("#res");
+        let cpres=document.querySelector("#cpres");
+        let taresspl=document.querySelector("#res");
+        let cpresspl=document.querySelector("#cpres");
+        let tinp=document.querySelector("#inp");
+        let binp=document.querySelector("#binp");
+     /*   for (let data of datas){
+            cdiv(data,par)
+        }*/
+        
+        let finalres=[]
+        
+        done.onclick = e =>{
+            console.log("done with "+res.length)
+            tares.value="["
+            
+            let xspl="[";
+            let yspl="[";
+            for (let i of res){
+                finalres.push({
+                    x:i.x,
+                    y:i.y
+                })
+                tares.value+="{\"x\":"+i.x+",\"y\":"+i.y+"},"
+                xspl+="{\"x\":"+i.x+",\"y\":0},";
+                yspl+="{\"x\":0,\"y\":"+i.y+"},";
+            }
+            tares.value=tares.value.slice(0,tares.value.length-1);
+            tares.value+="]";
+            xspl=xspl.slice(0,xspl.length-1);
+            yspl=yspl.slice(0,yspl.length-1);
+            xspl+="]";
+            yspl+="]";
+            taresspl.value="["+xspl+","+yspl+"]";
+        }
+        
+        cpres.onclick = () => {
+            if (!tares.value) {
+                alert("generate text first!")
+                return
+            }
+            tares.select()
+            tares.setSelectionRange(0, 999999)
+            document.execCommand("copy")
+            console.log("copied")
+            tares.blur()
+        }
+        
+         cpresspl.onclick = () => {
+            if (!taresspl.value) {
+                alert("generate text first!")
+                return
+            }
+            taresspl.select()
+            taresspl.setSelectionRange(0, 999999)
+            document.execCommand("copy")
+            console.log("copied")
+            taresspl.blur()
+        }
+        
+        binp.onclick=e=>{
+            if(!tinp.value){
+                return;
+            }
+            inpdatas=JSON.parse(tinp.value)
+            for (let data of inpdatas){
+            cdiv(data,par)
+        }
+        }
+    </script>
+</html>
