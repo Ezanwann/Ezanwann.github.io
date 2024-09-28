@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Page Title</title>
+        <style>
+            .wn{
+                height:0;
+                overflow:hidden;
+            } 
+            
+            *{
+                padding:0;
+                margin:0;
+            }
+        </style>
+    </head>
+    <body>
+    <div id="con">
+        <textarea id="tinp" placeholder="inp"></textarea>
+        <button id="binp">Add</button>
+        <textarea id="tinpspl" placeholder="inpspl"></textarea><br/>
+         <input type="number" id="cbct" placeholder="cbcfactor"><br/>
+       
+        <input type="number" id="cbcs" placeholder="cbcweight">
+       
+        <button id="binpspl">Add spl</button>
+         <input type="number" placeholder="scale" id="scale">
+         <br/>
+         
+         <button id="upd">Update</button>
+         <div id="conobj"></div>
+    </div>
+    <button data-b=0 id="tog">Show/Hide</button>
+    </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.10.0/p5.min.js"></script>
+    <script> //NOTE:YOU CAN SORT THE CIRCLES BASED ON RADIUS FROM BIGGER TO SMALLER SO IT LOOKS NEATER
+        let objs=[];
+        
+        
+        
+        let tinp=document.querySelector("#tinp");
+        let binp=document.querySelector("#binp");
+        let tinpspl=document.querySelector("#tinpspl");
+        let binpspl=document.querySelector("#binpspl");
+        let tog=document.querySelector("#tog");
+        let con=document.querySelector("#con");
+        
+        let sc=document.querySelector("#scale");
+        
+        let conobj=document.querySelector("#conobj");
+        
+        let upd=document.querySelector("#upd");
+        let cbcs=document.querySelector("#cbcs");
+        let cbct=document.querySelector("#cbct");
+        
+        
+        let gp=null;
+        let ghh=6.5;
+        let gs=1;
+        
+        function scaleArr(r,s){
+            for(let i of r){
+                i.x=i.x*s;
+                i.y=i.y*s;
+            }
+            return r;
+        }
+        
+        tog.onclick=e=>{
+            let b=e.target.dataset.b;
+            if(b==0){
+                con.classList.add("wn");
+                e.target.dataset.b=1;
+            }else{
+                con.classList.remove("wn");
+                e.target.dataset.b=0;
+            }
+        }
+        
+        upd.onclick=e=>{
+            let ns=sc.value;
+            let nhh=cbcs.value;
+            if(ns!=gs){
+                gs=ns;
+                for(let obj of objs){
+                    obj.updScale(gs);
+                }
+            }
+            if(nhh!=ghh){
+                ghh=nhh
+            }
+        }
+        
+        function lc(a,k){
+            let r=[];
+            //console.log(a[a.length-1].y)
+            for(let i=0;i<a.length-1;++i){
+                r.push({x:a[i].x,y:a[i].y})
+                for(let j=1;j<=k;++j){
+               // console.log("h")
+                    
+                    let s=a[i];
+                    let e=a[i+1];
+                    let ny=e.y-s.y;
+                    let nx=e.x-s.x;
+                    let x=j/(k+1);
+                    let y=j/(k+1);
+                    x=s.x*(1-x)+x*e.x;
+                    y=s.y*(1-y)+y*e.y;
+                    r.push({x,y})
+                }
+            }
+            r.push({x:a[a.length-1].x,y:a[a.length-1].y})
+            return r;
+        }
+        
+         function cbc(a,k){
+            let r=[];
+            //console.log(a[a.length-1].y)
+            for(let i=0;i<a.length-1;++i){
+                r.push({x:a[i].x,y:a[i].y})
+                for(let j=1;j<=k;++j){
+                    let s=a[i];
+                    let e=a[i+1];
+                    let s1=null;
+                    let e1=null;
+                    let hh=ghh;
+                    if(i-1<0){
+                        
+                        let nx=a[i+1].x-a[i+2].x;
+                        let ny=a[i+1].y-a[i+2].y;
+                        let h=Math.sqrt(nx*nx+ny*ny);
+                        h/=1;
+                        nx/=hh;
+                        ny/=hh;
+                        let x=a[i+1].x+nx;
+                        let y=a[i+1].y+ny;
+                        s1={
+                            x,
+                            y
+                        }
+                    }else{
+                        let nx=a[i].x-a[i-1].x;
+                        let ny=a[i].y-a[i-1].y;
+                        let h=Math.sqrt(nx*nx+ny*ny);
+                        h/=1;
+                        nx/=hh;
+                        ny/=hh;
+                        let x=a[i].x+nx;
+                        let y=a[i].y+ny;
+                        s1={
+                            x,
+                            y
+                        }
+                    }
+                    if(i+2>=a.length){
+                        let nx=a[i].x-a[i-1].x;
+                        let ny=a[i].y-a[i-1].y;
+                        let h=Math.sqrt(nx*nx+ny*ny);
+                        h/=1;
+                        nx/=hh;
+                        ny/=hh;
+                        let x=a[i].x+nx;
+                        let y=a[i].y+ny;
+                        
+                        e1={
+                            x,
+                            y
+                        }
+                    }else{
+                        let nx=a[i+1].x-a[i+2].x;
+                        let ny=a[i+1].y-a[i+2].y;
+                        let h=Math.sqrt(nx*nx+ny*ny);
+                        h/=1;
+                        nx/=hh;
+                        ny/=hh;
+                        let x=a[i+1].x+nx;
+                        let y=a[i+1].y+ny;
+                        
+                        e1={
+                            x,
+                            y
+                        }
+                    }
+                    
+                    let xr=j/(k+1);
+                    let yr=j/(k+1);
+                    let x=Math.pow(1-xr,3)*s.x+3*Math.pow(1-xr,2)*xr*s1.x+3*(1-xr)*Math.pow(xr,2)*e1.x+Math.pow(xr,3)*e.x;
+                    let y=Math.pow(1-yr,3)*s.y+3*Math.pow(1-yr,2)*yr*s1.y+3*(1-yr)*Math.pow(yr,2)*e1.y+Math.pow(yr,3)*e.y;
+                    r.push({x,y})
+                }
+            }
+            r.push({x:a[a.length-1].x,y:a[a.length-1].y})
+            return r;
+        }
+        
+        
+        
+        function aa(){
+            let r= [[{"x":44,"y":0},{"x":42,"y":0},{"x":40,"y":0},{"x":39,"y":0},{"x":37,"y":0},{"x":36,"y":0},{"x":35,"y":0},{"x":34,"y":0},{"x":33,"y":0},{"x":32,"y":0},{"x":31,"y":0},{"x":30,"y":0},{"x":29,"y":0},{"x":28,"y":0},{"x":26,"y":0},{"x":25,"y":0},{"x":24,"y":0},{"x":23,"y":0},{"x":22,"y":0},{"x":22,"y":0},{"x":22,"y":0},{"x":22,"y":0},{"x":22,"y":0},{"x":22,"y":0},{"x":22,"y":0},{"x":21,"y":0},{"x":20,"y":0},{"x":23,"y":0},{"x":27,"y":0},{"x":30,"y":0},{"x":33,"y":0},{"x":36,"y":0},{"x":38,"y":0},{"x":39,"y":0},{"x":38,"y":0},{"x":36,"y":0},{"x":34,"y":0},{"x":32,"y":0},{"x":30,"y":0},{"x":29,"y":0},{"x":26,"y":0},{"x":25,"y":0},{"x":24,"y":0},{"x":24,"y":0},{"x":24,"y":0},{"x":26,"y":0},{"x":28,"y":0},{"x":29,"y":0},{"x":31,"y":0},{"x":33,"y":0},{"x":36,"y":0},{"x":38,"y":0},{"x":41,"y":0},{"x":39,"y":0},{"x":39,"y":0},{"x":38,"y":0},{"x":37,"y":0},{"x":37,"y":0},{"x":35,"y":0},{"x":33,"y":0},{"x":31,"y":0},{"x":29,"y":0},{"x":27,"y":0},{"x":24,"y":0},{"x":21,"y":0},{"x":20,"y":0},{"x":19,"y":0},{"x":18,"y":0},{"x":17,"y":0},{"x":17,"y":0},{"x":18,"y":0},{"x":19,"y":0},{"x":21,"y":0},{"x":24,"y":0},{"x":27,"y":0},{"x":31,"y":0},{"x":33,"y":0},{"x":36,"y":0},{"x":39,"y":0},{"x":41,"y":0},{"x":41,"y":0},{"x":42,"y":0},{"x":43,"y":0},{"x":43,"y":0},{"x":43,"y":0},{"x":42,"y":0},{"x":41,"y":0},{"x":40,"y":0},{"x":40,"y":0},{"x":40,"y":0},{"x":41,"y":0},{"x":42,"y":0},{"x":45,"y":0},{"x":45,"y":0},{"x":44,"y":0},{"x":43,"y":0},{"x":46,"y":0},{"x":46,"y":0},{"x":45,"y":0},{"x":45,"y":0},{"x":46,"y":0},{"x":48,"y":0},{"x":50,"y":0},{"x":53,"y":0},{"x":56,"y":0},{"x":59,"y":0},{"x":60,"y":0},{"x":60,"y":0},{"x":59,"y":0},{"x":56,"y":0},{"x":54,"y":0},{"x":52,"y":0},{"x":50,"y":0},{"x":52,"y":0},{"x":54,"y":0},{"x":51,"y":0},{"x":50,"y":0},{"x":50,"y":0},{"x":47,"y":0},{"x":47,"y":0},{"x":47,"y":0},{"x":46,"y":0},{"x":45,"y":0},{"x":44,"y":0},{"x":44,"y":0},{"x":44,"y":0},{"x":45,"y":0},{"x":47,"y":0},{"x":49,"y":0},{"x":50,"y":0},{"x":53,"y":0},{"x":56,"y":0},{"x":59,"y":0},{"x":63,"y":0},{"x":67,"y":0},{"x":70,"y":0},{"x":68,"y":0},{"x":65,"y":0},{"x":63,"y":0},{"x":62,"y":0},{"x":58,"y":0},{"x":56,"y":0},{"x":53,"y":0},{"x":52,"y":0},{"x":50,"y":0},{"x":49,"y":0},{"x":47,"y":0},{"x":46,"y":0},{"x":45,"y":0},{"x":43,"y":0},{"x":42,"y":0},{"x":41,"y":0},{"x":42,"y":0},{"x":45,"y":0},{"x":47,"y":0},{"x":50,"y":0},{"x":54,"y":0},{"x":58,"y":0},{"x":61,"y":0},{"x":64,"y":0},{"x":67,"y":0},{"x":69,"y":0},{"x":70,"y":0},{"x":70,"y":0},{"x":65,"y":0},{"x":62,"y":0},{"x":58,"y":0},{"x":56,"y":0},{"x":53,"y":0},{"x":51,"y":0},{"x":49,"y":0},{"x":47,"y":0},{"x":44,"y":0},{"x":43,"y":0},{"x":45,"y":0},{"x":48,"y":0},{"x":53,"y":0},{"x":57,"y":0},{"x":59,"y":0},{"x":60,"y":0},{"x":60,"y":0},{"x":60,"y":0},{"x":60,"y":0},{"x":61,"y":0},{"x":62,"y":0},{"x":64,"y":0},{"x":67,"y":0},{"x":70,"y":0},{"x":72,"y":0},{"x":75,"y":0},{"x":77,"y":0},{"x":79,"y":0},{"x":82,"y":0},{"x":84,"y":0},{"x":86,"y":0},{"x":88,"y":0},{"x":91,"y":0},{"x":94,"y":0}],[{"x":0,"y":112},{"x":0,"y":111},{"x":0,"y":109},{"x":0,"y":107},{"x":0,"y":104},{"x":0,"y":103},{"x":0,"y":101},{"x":0,"y":99},{"x":0,"y":97},{"x":0,"y":95},{"x":0,"y":93},{"x":0,"y":91},{"x":0,"y":89},{"x":0,"y":87},{"x":0,"y":84},{"x":0,"y":82},{"x":0,"y":80},{"x":0,"y":77},{"x":0,"y":74},{"x":0,"y":71},{"x":0,"y":68},{"x":0,"y":65},{"x":0,"y":62},{"x":0,"y":59},{"x":0,"y":58},{"x":0,"y":55},{"x":0,"y":54},{"x":0,"y":56},{"x":0,"y":57},{"x":0,"y":57},{"x":0,"y":56},{"x":0,"y":56},{"x":0,"y":54},{"x":0,"y":52},{"x":0,"y":49},{"x":0,"y":48},{"x":0,"y":47},{"x":0,"y":47},{"x":0,"y":47},{"x":0,"y":47},{"x":0,"y":48},{"x":0,"y":50},{"x":0,"y":51},{"x":0,"y":54},{"x":0,"y":55},{"x":0,"y":54},{"x":0,"y":52},{"x":0,"y":51},{"x":0,"y":50},{"x":0,"y":50},{"x":0,"y":50},{"x":0,"y":51},{"x":0,"y":53},{"x":0,"y":50},{"x":0,"y":47},{"x":0,"y":45},{"x":0,"y":42},{"x":0,"y":40},{"x":0,"y":38},{"x":0,"y":36},{"x":0,"y":36},{"x":0,"y":36},{"x":0,"y":36},{"x":0,"y":37},{"x":0,"y":38},{"x":0,"y":39},{"x":0,"y":40},{"x":0,"y":41},{"x":0,"y":44},{"x":0,"y":47},{"x":0,"y":49},{"x":0,"y":46},{"x":0,"y":44},{"x":0,"y":42},{"x":0,"y":41},{"x":0,"y":40},{"x":0,"y":40},{"x":0,"y":40},{"x":0,"y":41},{"x":0,"y":43},{"x":0,"y":45},{"x":0,"y":48},{"x":0,"y":51},{"x":0,"y":54},{"x":0,"y":57},{"x":0,"y":60},{"x":0,"y":63},{"x":0,"y":65},{"x":0,"y":68},{"x":0,"y":70},{"x":0,"y":73},{"x":0,"y":76},{"x":0,"y":78},{"x":0,"y":76},{"x":0,"y":74},{"x":0,"y":72},{"x":0,"y":74},{"x":0,"y":72},{"x":0,"y":69},{"x":0,"y":67},{"x":0,"y":65},{"x":0,"y":62},{"x":0,"y":61},{"x":0,"y":62},{"x":0,"y":64},{"x":0,"y":67},{"x":0,"y":70},{"x":0,"y":73},{"x":0,"y":75},{"x":0,"y":77},{"x":0,"y":77},{"x":0,"y":76},{"x":0,"y":76},{"x":0,"y":74},{"x":0,"y":72},{"x":0,"y":71},{"x":0,"y":73},{"x":0,"y":74},{"x":0,"y":76},{"x":0,"y":79},{"x":0,"y":80},{"x":0,"y":82},{"x":0,"y":84},{"x":0,"y":86},{"x":0,"y":90},{"x":0,"y":93},{"x":0,"y":95},{"x":0,"y":95},{"x":0,"y":93},{"x":0,"y":92},{"x":0,"y":91},{"x":0,"y":90},{"x":0,"y":90},{"x":0,"y":90},{"x":0,"y":90},{"x":0,"y":90},{"x":0,"y":88},{"x":0,"y":86},{"x":0,"y":85},{"x":0,"y":84},{"x":0,"y":83},{"x":0,"y":82},{"x":0,"y":82},{"x":0,"y":82},{"x":0,"y":84},{"x":0,"y":84},{"x":0,"y":84},{"x":0,"y":84},{"x":0,"y":86},{"x":0,"y":89},{"x":0,"y":91},{"x":0,"y":94},{"x":0,"y":96},{"x":0,"y":98},{"x":0,"y":100},{"x":0,"y":101},{"x":0,"y":101},{"x":0,"y":101},{"x":0,"y":100},{"x":0,"y":98},{"x":0,"y":95},{"x":0,"y":93},{"x":0,"y":92},{"x":0,"y":91},{"x":0,"y":91},{"x":0,"y":92},{"x":0,"y":93},{"x":0,"y":94},{"x":0,"y":94},{"x":0,"y":94},{"x":0,"y":95},{"x":0,"y":96},{"x":0,"y":97},{"x":0,"y":99},{"x":0,"y":101},{"x":0,"y":103},{"x":0,"y":103},{"x":0,"y":103},{"x":0,"y":104},{"x":0,"y":107},{"x":0,"y":110},{"x":0,"y":113},{"x":0,"y":116},{"x":0,"y":118},{"x":0,"y":120},{"x":0,"y":122},{"x":0,"y":122},{"x":0,"y":121},{"x":0,"y":120},{"x":0,"y":118},{"x":0,"y":117},{"x":0,"y":116},{"x":0,"y":114},{"x":0,"y":113},{"x":0,"y":111},{"x":0,"y":110},{"x":0,"y":107},{"x":0,"y":105}]]
+            let nx=cbc(r[0],2);
+           // console.log(r[0].length)
+           // console.log(nx.length)
+            let ny=cbc(r[1],2);
+            return [scaleArr(nx,2),scaleArr(ny,2)]
+        }
+        
+        function exA(){
+            let r=[]
+            for(let i=0;i<Math.PI*2;i+=0.1){
+                r.push({x:0,y:Math.sin(i)*10})
+            }
+            return r
+        }
+        function exB(){
+            let r=[]
+            for(let i=0;i<Math.PI*2;i+=0.1){
+                r.push({x:Math.cos(i)*10,y:0})
+            }
+            return r
+        }
+        
+        function spp(){
+            return [exB(),exA()];
+        }
+        
+        function tess(){
+            let x=[{
+                x:-5,y:0
+            },{x:-2,y:0},{x:2,y:0},{x:5,y:0}]
+            let y=[{x:0,y:5},{x:0,y:2},{x:0,y:2},{x:0,y:5}]
+            x=cbc(x,50);
+            y=cbc(y,50)
+            return [scaleArr(x,5),scaleArr(y,5)]
+        }
+        
+        function ll(){
+            let x=[];
+            let y=[];
+            for (let i=-50;i<50;++i){
+                x.push({x:i,y:0});
+                y.push({x:0,y:-i});
+            }
+            return [x,y]
+        }
+        
+        function rmObj(e){
+            let i=e.target.parentElement.dataset.i;
+            objs=objs.slice(0,i);
+            conobj.removeChild(e.target.parentElement)
+        }
+        
+        function updObjsDiv(){
+            let o=objs[objs.length-1];
+            
+            let i=objs.length-1;
+            console.log("length is"+i)
+            let d=document.createElement("div");
+            d.dataset.i=i;
+            let p=document.createElement("p");
+            p.innerHTML=i;
+            let rem=document.createElement("button");
+            rem.innerHTML="REM"
+            rem.onclick=rmObj;
+            d.appendChild(p);
+            d.appendChild(rem);
+            conobj.appendChild(d)
+        }
+        
+        
+        binp.onclick=e=>{
+            if(!tinp.value)return;
+            let r=JSON.parse(tinp.value);
+            let s=1;
+            if(sc.value)s=sc.value;
+            r=scaleArr(r,s);
+            console.log("called")
+            let ob=new objF(gp);
+            ob.initArr(r);
+            ob.setIxy(200,200)
+            objs.push(ob);
+            updObjsDiv();
+        }
+        
+        binpspl.onclick=e=>{
+        console.log("length bef is "+objs.length)
+            if(!tinpspl.value)return;
+            let r=JSON.parse(tinpspl.value);
+            let s=1;
+            if(sc.value)s=sc.value;
+            r[0]=scaleArr(r[0],s);
+            r[1]=scaleArr(r[1],s);
+            r[0]=cbc(r[0],cbct.value);
+            r[1]=cbc(r[1],cbct.value)
+            //console.log(s)
+            
+            let ob=new objF(gp);
+            ob.initSplitArr(r);
+            ob.setIxy(200,200)
+            
+            objs.push(ob);
+            console.log("length bef is "+objs.length)
+            updObjsDiv();
+        }
+    
+        let square = function(){
+            let inp=[]
+            for(let j=0;j<4;++j){
+            let isRight=false;
+            let isDown=false;
+            for (let i=0;i<50;++i){
+                let x,y;
+                if(!isRight){
+                    x=i;
+                }else{
+                    x=50-i;
+                }
+                if(!isDown){
+                    y=i
+                }else{
+                    y=50-i;
+                }
+                
+                inp.push({x:x,y:y});
+            }
+            if(!isRight){
+                isRight=true;
+            }
+            }
+            return inp
+        }
+        
+        let loveShape=function(){
+        let inp=[]
+        for(let i =0;i<360;++i){
+            
+                let petalSize =50
+                let t = i * (Math.PI / 180); 
+                let x = 16 * Math.sin(t) ** 3; 
+                let y = 13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t);
+                inp.push({x:x*10,y:y*-10})
+                }
+                return inp;
+        }
+        
+        let loveShapeSpl=function(){
+        let inp=[];
+        let inp2=[];
+        for(let i =0;i<360;++i){
+            
+                let petalSize =50
+                let t = i * (Math.PI / 180); 
+                let x = 16 * Math.sin(t) ** 3; 
+                let y = 13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t);
+                inp.push({x:x*3,y:0});
+                inp2.push({x:0,y:y*-3});
+                }
+                return [inp,inp2];
+        }
+    
+         function newShapeSpl(){
+             let xa=[];
+             let ya=[];
+             
+             for(let i=0;i<Math.PI;i+=.004){
+                 
+                 let x=Math.sin(2*i)*(1-Math.cos(80*i))*(1-(Math.pow(Math.sin(2*i),8)/12))/6;
+                 let y=(Math.pow((2*i/Math.PI)-1,2)/-2)+Math.sin(2*i)*Math.pow(Math.sin(80*i),3)/7
+                 
+                 xa.push({x:x*180,y:0});
+                 ya.push({x:0,y:y*-180});
+             }
+             
+             return [xa,ya];
+         }
+        
+        
+        
+        let objF = function(p) {
+            this.p=p;
+            this.scns=[];
+            this.cns=[];
+            this.inp=[];
+            this.gl=[];
+            this.ct=0;
+            this.ctm=1;
+            this.S=0;
+            this.ix=0;
+            this.iy=0;
+            this.split=false;
+            this.inpspl=[];
+            this.cnsspl=[];
+            this.scnsspl=[];
+            this.glspl=[];
+            this.ctspl=[];
+            this.ctmspl=1;
+            this.sspl=0;
+            this.u=150;
+            this.l=this.u;
+            
+            this.setIxy=function(x,y){
+                //this.gl[0]={x:0,y:0};
+                this.ix=x;
+                this.iy=y;
+            }
+            
+            this.init=function(f){
+                this.inp=f();
+                this.S=this.inp.length;
+                this.invFourier();
+            }
+            
+            this.initArr=function(a){
+                this.S=a.length;
+                this.inp=a;
+                this.invFourier();
+            }
+            
+            this.initSplit=function(a,b){
+                this.split=true;
+                this.inp=a();
+                this.inpspl=b();
+                this.S=this.inp.length;
+                this.sspl=this.inpspl.length;
+                this.invFourierSplit();
+            }
+            
+            this.initSplitArr=function(f){
+                this.split=true;
+                this.inp=f[0];
+                this.inpspl=f[1];
+                this.S=this.inp.length;
+                this.sspl=this.inpspl.length;
+                this.invFourierSplit();
+            }
+            
+            this.invFourier = function(){
+              // console.log(this.inp.length)
+               for(let i=0;i<this.S;++i) invFourier(this.cns,this.inp,i,this.S,this.p)
+               //console.log(this.cns.length)
+            }
+            this.invFourierSplit = function(){
+              // console.log(this.inp.length)
+               for(let i=0;i<this.S;++i){ invFourier(this.cns,this.inp,i,this.S,this.p)
+               invFourier(this.cnsspl,this.inpspl,i,this.sspl,this.p)
+               }
+               //console.log(this.cns.length)
+            }
+            
+            
+            this.run=function(){
+                this.p.translate(this.ix,this.iy);
+                if(!this.split){
+                let {x,y}=calcFourierSort(this.cns,this.ct,this.S,this.scns,this.p);
+                /*if(this.gl.length>0&&x==this.gl[0].x&&y==this.gl[0].y){
+                    this.gl=[]
+                }*/
+                this.gl.push({x,y});
+               // console.log(this.gl.length)
+                
+                drawAllLine(this.gl,this.p);
+                this.ct=this.ct+(1*this.ctm);
+                if(this.ct>this.S)this.ct=0;
+                if(this.gl.length>this.S)this.gl=[];
+                this.scns=[];
+                }else{
+                this.p.translate(0,-this.u)
+                    let {x,y}=calcFourierSort(this.cns,this.ct,this.S,this.scns,this.p);
+                
+                this.ct=this.ct+(1*this.ctm);
+                this.scns=[]
+                
+                this.p.translate(-this.l,this.u);
+               let {x:xspl,y:yspl}=calcFourierSort(this.cnsspl,this.ctspl,this.sspl,this.scnsspl,this.p);
+                
+                this.ctspl=this.ctspl+(1*this.ctmspl);
+                this.scnsspl=[];
+               
+              
+              this.p.translate(this.l,0);
+              
+                
+                this.gl.push({x,y:yspl});
+                drawAllLine(this.gl,this.p);
+                drawLine(x,yspl,x,y-this.u,this.p)
+                drawLine(x,yspl,xspl-this.l,yspl,this.p)
+                if(this.ct>this.S||this.ctspl>this.sspl){
+                    this.ct=0;
+                    this.ctspl=0;
+                    this.gl=[];
+                }
+                }
+                this.p.translate(-this.ix,-this.iy);
+            }
+            
+            this.updScale=function(sc){
+                this.inp=scaleArr(this.inp,sc);
+                this.cns=[];
+                this.ct=0;
+                this.gl=[];
+                if(this.split){
+                    this.inpspl=scaleArr(this.inpspl,sc);
+                    this.cnsspl=[];
+                    this.ctspl=0;
+                    this.glspl=[];
+                    this.invFourierSplit();
+                }else{
+                    this.invFourier();
+                }
+                
+            }
+        }
+        
+    
+        let CN = function (r,i) {
+            this.i=i;
+            this.r=r;
+            
+            this.add=function(ocn){
+                return new CN(this.r+ocn.r, this.i+ocn.i);
+            }
+            
+            this.multiply=function(ocn){
+                let r =new CN(0,0);
+                r.r=this.r*ocn.r-this.i*ocn.i;
+                r.i=this.r*ocn.i+this.i*ocn.r;
+                return r;
+            }
+        }
+        
+        let invFourier = function(cns,inp,t,N,p) {
+            let r = new CN(0,0);
+            for (let i=0;i<N;++i){
+                let c = new CN(0,0);
+                c.r = p.cos(p.TWO_PI*i*t/N);
+                c.i = p.sin(p.TWO_PI*i*t/N);
+                let inpc = new CN(inp[i].x,inp[i].y);
+                c=c.multiply(inpc);
+                r=r.add(c)
+            }
+            r.r/=N;
+            r.i/=N;
+            cns[t]=r;
+        }
+        
+        let fourier = function(cns,inp,t,N,p) {
+            let r = new CN(0,0);
+            for (let i=0;i<N;++i) {
+                let c = new CN(0,0);
+                c.r = p.cos(p.TWO_PI*i*t/N);
+                c.i = -p.sin(p.TWO_PI*i*t/N);
+                c=c.multiply(cns[i]);
+                r=r.add(c);
+            }
+            return r;
+        }
+        
+        let calcFourier = function(cns,t,N,l,p){
+            let x=0;
+            let y=0;
+            let prevx=0;
+            let prevy=0;
+            let r=null;
+            for (let i=0;i<N;++i){
+                let c = new CN(0,0);
+                c.r = p.cos(p.TWO_PI*i*t/N);
+                c.i = -p.sin(p.TWO_PI*i*t/N);
+                c=c.multiply(cns[i]);
+                x+=c.r;
+                y+=c.i;
+                drawLine(prevx,prevy,x,y,p);
+                drawCircle(prevx,prevy,c,p);
+                prevx+=c.r;
+                prevy+=c.i;
+                
+                r=c;
+            }
+            return {x,y}
+        }
+        
+        let findMag=function(c){
+            return Math.sqrt(c.r*c.r+c.i*c.i)
+        }
+        
+        let calcFourierSort = function(cns,t,N,l,p){
+            let x=0;
+            let y=0;
+            let prevx=0;
+            let prevy=0;
+            let r=null;
+            for (let i=0;i<N;++i){
+                let c = new CN(0,0);
+                c.r = p.cos(p.TWO_PI*i*t/N);
+                c.i = -p.sin(p.TWO_PI*i*t/N);
+                c=c.multiply(cns[i]);
+                l.push(c)
+            }
+            l.sort((a,b)=>{
+                //console.log("sort")
+                return findMag(b)-findMag(a);
+            })
+            
+            for (let i=0;i<N;++i){
+                if(i>=0){
+                    let c = new CN(0,0);
+                    c.r = p.cos(p.TWO_PI*0*(t+1)/N);
+                    c.i = -p.sin(p.TWO_PI*0*(t+1)/N);
+                    c=c.multiply(cns[i]);
+                    if(l[i].r==c.r&&l[i].i==c.i){
+                        continue;
+                    }
+                }
+                x+=l[i].r;
+                y+=l[i].i;
+                drawLine(prevx,prevy,x,y,p);
+                drawCircle(prevx,prevy,l[i],p);
+                prevx+=l[i].r;
+                prevy+=l[i].i;
+                
+                r=l;
+            }
+            return {x,y}
+        }
+        
+        let drawLine = function(x,y,nx,ny,p){
+            p.line(x,y,nx,ny);
+        }
+        
+        let drawCircle=function(x,y,r,p){
+            let mag=r.r*r.r+r.i*r.i;
+            mag=p.sqrt(mag);
+            p.fill(p.color("green"))
+            p.noFill()
+           // console.log("19")
+            p.circle(x,y,mag*2);
+        }
+        
+        let drawAllLine=function(gl,p){
+            for (let i=0;i<gl.length-1;++i){
+                
+            p.line(gl[i].x,gl[i].y,gl[i+1].x,gl[i+1].y)
+            }
+        }
+    
+        const ms = function(p) {
+        
+            gp=p;
+            
+            let objFa=new objF(p);
+            let objFb=new objF(p);
+            p.setup=()=>{
+                p.createCanvas(400,400);
+                
+                objFa.initSplitArr(tess());
+                objFa.setIxy(200,200)
+                
+                
+                
+               objs.push(objFa)
+                updObjsDiv()
+            };
+            
+            
+            
+            p.draw=()=>{
+                p.background(125);
+               // objFa.run();
+            //  objFb.run();
+               for (let o of objs) o.run();
+            }
+        }
+        new p5(ms)
+        
+    </script>
+</html>
