@@ -1,6 +1,6 @@
 [
     {
-        "name": "hhh)",
+        "name": "hiragi",
         "category": "PencuriMovie",
         "info": {
             "poster": "https://image.tmdb.org/t/p/w185/6w7vApBT34Kb6B7ITxs45l9gswx.jpg",
@@ -21,13 +21,9 @@
             ],
             "year": "2024"
         },
-        "video": "https://web.telegram.org/a/progressive/document5969587470050792831",
+"video": "blob:https://sooka.my/e3549cb5-4f0c-4dbe-9d2d-d4f31af879c8",
         "headers": {
-            "Referrer-policy":"strict-origin-when-cross-origin",
-            "Referer": "https://web.telegram.org/a/",
-           "sec-ch-ua": "\"Not-A.Brand\";v=\"99\", \"Chromium\";v=\"124\"",
-    "sec-ch-ua-mobile": "?1",
-    "sec-ch-ua-platform": "\"Android\""
+            "Referer": "https://sooka.my",
         }
     }
 ]
