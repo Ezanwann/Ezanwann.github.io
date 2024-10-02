@@ -39,7 +39,8 @@
         
         <button id="cpresspl">Copy spl</button>
         <br/>
-         <textarea id="inp" placeholder="inp"></textarea>
+         <textarea id="inp" placeholder="inp"></textarea><br/>
+         <textarea id="load" placeholder="load"></textarea>
         <button id="binp">Start</button>
         <div id="par"></div>
     </body>
@@ -73,7 +74,7 @@
                 d.classList.add("g");
             } else {
                 //console.log("false"+sel)
-                let b=prompt("Want to delete");
+                let b=confirm("Want to delete");
                 if(b){
                     let ii=d.dataset.i;
                     for(let j=ii;j<res.length;++j){
@@ -95,6 +96,7 @@
             d.style.position="absolute";
             let x=o.x*W+(o.x)*WG;
             let y=o.y*H+o.y*HG;
+            let s="x"+o.x+"y"+o.y;
             d.style.top=y+"px";
             d.style.left=x+"px";
             d.dataset.sel=0;
@@ -103,6 +105,7 @@
             d.dataset.i=-1;
             d.classList.add("y");
             d.classList.add("div");
+            d.classList.add(s);
             d.onclick=cf;
             p.appendChild(d);
         }
@@ -118,6 +121,7 @@
         let cpresspl=document.querySelector("#cpresspl");
         let tinp=document.querySelector("#inp");
         let binp=document.querySelector("#binp");
+        let load=document.querySelector("#load");
      /*   for (let data of datas){
             cdiv(data,par)
         }*/
@@ -172,14 +176,27 @@
             taresspl.blur()
         }
         
+        function loadAll(){
+            let v=JSON.parse(load.value);
+            for(let i of v){
+                let s="x"+i.x+"y"+i.y;
+                let d=document.querySelector("."+s);
+                d.click();
+            }
+        }
+        
         binp.onclick=e=>{
             if(!tinp.value){
                 return;
             }
-            inpdatas=JSON.parse(tinp.value)
+            inpdatas=JSON.parse(tinp.value);
+            
             for (let data of inpdatas){
-            cdiv(data,par)
-        }
+                cdiv(data,par)
+            }
+            if(load.value){
+                loadAll();
+            }
         }
     </script>
 </html>
