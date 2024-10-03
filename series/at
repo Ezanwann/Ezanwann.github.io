@@ -1,0 +1,83 @@
+[
+    {
+        "name": "Hiiiiiiragiiii",
+        "category": "PencuriMovie",
+        "info": {
+            "poster": "https://image.tmdb.org/t/p/w185/6w7vApBT34Kb6B7ITxs45l9gswx.jpg",
+            "bg": "https://image.tmdb.org/t/p/w185/6w7vApBT34Kb6B7ITxs45l9gswx.jpg",
+            "plot": "Luka, a young man from the settlement area, grew up surrounded by unhealthy elements such as drug addiction, prostitution and gangsterism. Despite coming from such a background, Luka tries to live a normal life. He has a conflict with Bono since they were teenagers when Bono and his gang tried to blackmail his mother`s stall. Luka refuses to accept injustices and will always help whenever he can but the cards are stacked against him. He begins to rebel against the wrongs that are happening around him.",
+            "backdrop": "https://image.tmdb.org/t/p/w185/6w7vApBT34Kb6B7ITxs45l9gswx.jpg",
+            "director": [
+                "Awie"
+            ],
+            "cast": [
+                "Awie",
+                "Azlan Komeng",
+                "Ben Amir",
+                "Jesse Lim",
+                "MK K-Clique",
+                "Nor Albaniah",
+                "Shiqin Kamal"
+            ],
+            "year": "2024"
+        },
+"video": "https://vod-playback.sooka.my/edash/p/3089633/sp/308963300/serveFlavor/entryId/1_zqsbl0q7/v/1/ev/9/flavorId/1_,y09zq1dl,s9szhked,qg18t9al,zhj0o53r,2ttxp7p7,z1181hwk,17vneuio,3y8qt21x,/forceproxy/true/name/a.mp4.urlset/init-f1-v1-x3.mp4",
+        "headers": {
+            "Referer": "https://sooka.my"
+        }
+    },
+{
+        "name": "Hiiiiiiragiiii2",
+        "category": "PencuriMovie",
+        "info": {
+            "poster": "https://image.tmdb.org/t/p/w185/6w7vApBT34Kb6B7ITxs45l9gswx.jpg",
+            "bg": "https://image.tmdb.org/t/p/w185/6w7vApBT34Kb6B7ITxs45l9gswx.jpg",
+            "plot": "Luka, a young man from the settlement area, grew up surrounded by unhealthy elements such as drug addiction, prostitution and gangsterism. Despite coming from such a background, Luka tries to live a normal life. He has a conflict with Bono since they were teenagers when Bono and his gang tried to blackmail his mother`s stall. Luka refuses to accept injustices and will always help whenever he can but the cards are stacked against him. He begins to rebel against the wrongs that are happening around him.",
+            "backdrop": "https://image.tmdb.org/t/p/w185/6w7vApBT34Kb6B7ITxs45l9gswx.jpg",
+            "director": [
+                "Awie"
+            ],
+            "cast": [
+                "Awie",
+                "Azlan Komeng",
+                "Ben Amir",
+                "Jesse Lim",
+                "MK K-Clique",
+                "Nor Albaniah",
+                "Shiqin Kamal"
+            ],
+            "year": "2024"
+        },
+"video": "https://vod-playback.sooka.my/edash/p/3089633/sp/308963300/serveFlavor/entryId/1_zqsbl0q7/v/1/ev/9/flavorId/1_,y09zq1dl,s9szhked,qg18t9al,zhj0o53r,2ttxp7p7,z1181hwk,17vneuio,3y8qt21x,/forceproxy/true/name/a.mp4.urlset/manifest.mpd",
+        "headers": {
+            "Referer": "https://sooka.my"
+        }
+    },
+{
+        "name": "Hiiiiiiragiiii3",
+        "category": "PencuriMovie",
+        "info": {
+            "poster": "https://image.tmdb.org/t/p/w185/6w7vApBT34Kb6B7ITxs45l9gswx.jpg",
+            "bg": "https://image.tmdb.org/t/p/w185/6w7vApBT34Kb6B7ITxs45l9gswx.jpg",
+            "plot": "Luka, a young man from the settlement area, grew up surrounded by unhealthy elements such as drug addiction, prostitution and gangsterism. Despite coming from such a background, Luka tries to live a normal life. He has a conflict with Bono since they were teenagers when Bono and his gang tried to blackmail his mother`s stall. Luka refuses to accept injustices and will always help whenever he can but the cards are stacked against him. He begins to rebel against the wrongs that are happening around him.",
+            "backdrop": "https://image.tmdb.org/t/p/w185/6w7vApBT34Kb6B7ITxs45l9gswx.jpg",
+            "director": [
+                "Awie"
+            ],
+            "cast": [
+                "Awie",
+                "Azlan Komeng",
+                "Ben Amir",
+                "Jesse Lim",
+                "MK K-Clique",
+                "Nor Albaniah",
+                "Shiqin Kamal"
+            ],
+            "year": "2024"
+        },
+"video": "https://vod-playback.sooka.my/edash/p/3089633/sp/308963300/serveFlavor/entryId/1_zqsbl0q7/v/1/ev/9/flavorId/1_,y09zq1dl,s9szhked,qg18t9al,zhj0o53r,2ttxp7p7,z1181hwk,17vneuio,3y8qt21x,/forceproxy/true/name/a.mp4.urlset/fragment-1-f6-a1-x3.m4s",
+        "headers": {
+            "Referer": "https://sooka.my"
+        }
+    }
+]
