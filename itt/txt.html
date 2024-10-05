@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Image Based Text Generator</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            
+            .output {
+                white-space: nowrap;
+                width: 100vw;
+                margin: 0 auto;
+                text-align: left;
+            }
+
+            .info {
+                font-size: 16px;
+                font-weight: bold;
+            }
+             
+            
+
+        </style>
+    </head>
+    <body>
+        <p class="info">generate text based on black/white image ( lily mea 2019 )</p>
+        <br>
+        <!-- character for bright side (you can use emoji)--> 
+        <input class="top" type="number" placeholder="top cut" value=0 />
+        <input class="right" type="number" placeholder="right cut" value=0/>
+        <input class="bottom" type="number" placeholder="bottom cut" value=0 />
+        <input class="left" type="number" placeholder="left cut" value=0/>
+        <input class="bsym" type="text" placeholder="bright character"/>
+        
+        <!-- characyer for dark side (you can use emoji)-->
+        <input class="dsym" type="text" placeholder="dark character"/>
+        
+        <!-- image width in px,(setting it to large value generate more clear text image but may slow the generator) -->
+        <input class="width" type="number" placeholder="width"/>
+        
+        <!-- image height in px
+(setting it to large value generate more clear text image but may slow the generator) -->
+        <input class="height" type="number" placeholder="height"/>
+        
+        <!-- adjust this value if pic too dark/bright,the higher the value, the darker the pic (0 - 255) -->
+        <input class="darkness" type="number" placeholder="darkness level"/>
+        
+        <!-- img url(note that some img may not work cause of cross origin policy), you can use colored img too -->
+        <textarea class="url" type="text" placeholder="img url"></textarea>
+        
+        
+        <button class="flip">Flip</button>
+        <!-- generate text -->
+        <button class="generate">generate</button>
+        
+        <!-- copy text -->
+        <button class="copybtn" >Copy</button>
+        <textarea class="copyinp"></textarea>
+
+
+        <input class = "pxSize" type="number" placeholder="pxSize" />
+        
+        
+        <canvas style="padding:0;margin:0" id ="cvs" width="300" height="400"></canvas>
+        <div class="outputCount"></div>
+    
+        <div class="output"></div>
+        
+        
+    </body>
+
+    <script>
+        //default value if input not set
+        let pxSize = 4 ,w = 46, h = 110, min = 150
+        let bsym = "#", dsym = "="
+        let imgSrc ="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/373a82fe-4db0-4e77-bb70-73a06d9d7cc8/dbapnu3-4a647001-cdf6-49f5-92c2-6e0f4acc8045.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvMzczYTgyZmUtNGRiMC00ZTc3LWJiNzAtNzNhMDZkOWQ3Y2M4XC9kYmFwbnUzLTRhNjQ3MDAxLWNkZjYtNDlmNS05MmMyLTZlMGY0YWNjODA0NS5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.5KudZk3X7PYYjA3psOdULRJC0gTIjT1hlhNmlf81vB4"
+        
+        let done = false;
+        let generating = false
+        
+        let topcut = 0;
+        let rightcut = 0;
+        let bottomcut = 0;
+        let leftcut = 0;
+        //default value
+        
+        //element
+        let topcutel = document.querySelector(".top")
+        let rightcutel = document.querySelector(".right")
+        let bottomcutel = document.querySelector(".bottom")
+        let leftcutel = document.querySelector(".left")
+        
+        let flipbtn = document.querySelector(".flip")
+        let bsymel = document.querySelector(".bsym")
+        let dsymel = document.querySelector(".dsym")
+        let generate = document.querySelector(".generate")
+        let width = document.querySelector(".width")
+        let height = document.querySelector(".height")
+        let darkness = document.querySelector(".darkness")
+        let url = document.querySelector(".url")
+        let output = document.querySelector(".output")
+        let outputCount = document.querySelector(".outputCount")
+        let cvs = document.querySelector("#cvs")
+        let copybtn = document.querySelector(".copybtn")
+        let copyinp = document.querySelector(".copyinp")
+        
+        let pxSizeInp = document.querySelector(".pxSize")
+        //element
+        
+        let flip = false
+        //context and img
+        let ctx = cvs.getContext("2d")
+        let img = new Image()
+        img.crossOrigin = "anonymous"
+        
+        
+        //context and img
+
+        //onclick 
+        flipbtn.onclick = function() {
+            flip =!flip
+        }
+        generate.onclick = () => {
+            pxSize = (pxSizeInp.value) ? pxSizeInp.value : pxSize;
+            output.style.fontSize = pxSize + "px"
+            bsym = (bsymel.value) ? bsymel.value : bsym;
+            dsym = (dsymel.value) ? dsymel.value : dsym;
+            w = (width.value) ? width.value : w;
+            h = (height.value) ? height.value : h;
+            min = (darkness.value) ? darkness.value : min;
+            imgSrc = (url.value) ? url.value : imgSrc;
+            img.src = imgSrc
+            topcut = topcutel.value;
+            rightcut = rightcutel.value
+            bottomcut = bottomcutel.value
+            leftcut = leftcutel.value
+            
+            ctx.clearRect(0, 0, cvs.width, cvs.height)
+           
+        }
+        //onclick
+        
+        
+        //copy
+        copybtn.onclick = () => {
+            if (!copyinp.value || generating) {
+                alert("generate text first!")
+                return
+            }
+            copyinp.select()
+            copyinp.setSelectionRange(0, 999999)
+            document.execCommand("copy")
+            console.log("copied")
+            copyinp.blur()
+        }
+        
+        
+        
+
+        //img onload
+        img.onload = () => {
+            generating = true
+            copybtn.disabled = true
+            generate.disabled = true;
+            ctx.save()
+            
+            //ctx.drawImage(img, 0, 0, w, h)
+            if (bottomcut == 0) bottomcut = img.height;
+            if (rightcut == 0) rightcut = img.width;
+            ctx.drawImage(img, leftcut, topcut, rightcut, bottomcut, 0, 0, w, h)
+            outputCount.innerHTML = ""
+            let textArr = []
+        
+        
+            let c = 0;
+            let data = ctx.getImageData(0, 0, w , h)
+            let pixelData = data.data
+        
+            
+            for (let i = 0; i < pixelData.length; i+=4) {
+                let r = pixelData[i] ;
+                let g = pixelData[i + 1] ;
+                let b = pixelData[i + 2] ;
+                let avg = (r + g + b) / 3
+          
+                
+                if(avg > min) avg = 255
+                else avg = 0
+                
+                data.data[i] = avg;
+                data.data[i + 1]= avg;
+                data.data[i + 2]= avg;
+                if (i % (w * 4) == 0) {
+                    textArr[c++] = "<br>"
+                }
+                
+                if (avg == 255) {
+                    textArr[c++] = bsym
+                } else {
+                    textArr[c++] = dsym
+                }
+            }
+           
+            output.innerHTML = ""
+            copyinp.value = ""
+            let ct = 1;
+            
+            
+
+
+            for(let i = 0;i < textArr.length + 2;i++) {
+                
+                  if(i == 0 || i == 1 || i == textArr.length || i == textArr.length + 1) {
+                      copyinp.value += ".\n"
+                      if (i == textArr.length + 1) done = true
+                  }
+                   else {
+                  output.innerHTML += textArr[i - 2]
+                  copyinp.value += (textArr[i - 2] == "<br>") ? "\n" : textArr[i - 2]
+                  
+                  
+                }
+                if(done) {
+                        outputCount.innerHTML = 
+"Done generating texts with " + ct + " characters" 
+                        done = false;
+                        generating = false
+                        copybtn.disabled = false
+                        generate.disabled = false
+                   } else {
+                       outputCount.innerHTML = "Generating texts.Please wait . . ."
+                       }
+                
+                ct++;
+            }
+            
+        
+        }
+            
+        function calc(pd, i, w, hg, min) {
+            let totalpx = hg * w * 4;
+            let aa = i;
+            let ba = aa + 4;
+            let ab = aa + w * 4;
+            let bb = ab + 4;
+            let ac = ab + w * 4;
+            let bc = ac + 4;
+            let ad = ac + w * 4;
+            let bd = ad + 4;
+            let a = 0255;
+            let b = 0255;
+            let c = 0255;
+            let d = 0255;
+            let e = 0255;
+            let f = 0255;
+            let g = 0255;
+            let h = 0255;
+            
+            
+            a = (pd[aa] + pd[aa + 1] + pd[aa+2]) / 3
+            d = (pd[ba] + pd[ba + 1] + pd[ba+2]) / 3 
+            
+            
+            if(ab < totalpx) {
+               
+               e = (pd[bb] + pd[bb + 1] + pd[bb+2]) / 3
+               b = (pd[ab] + pd[ab + 1] + pd[ab+2]) / 3
+            } 
+            
+            if (ac < totalpx) {
+                c = (pd[ac] + pd[ac + 1] + pd[ac+2]) / 3
+                f = (pd[bc] + pd[bc + 1] + pd[bc+2]) / 3
+            }
+            
+            if (ad < totalpx) {
+                g = (pd[ad] + pd[ad + 1] + pd[ad+2]) / 3
+                h = (pd[bd] + pd[bd + 1] + pd[bd+2]) / 3
+            }
+            
+            
+            
+            
+            let bin = 0b00000000;
+            if (flip) {
+                if (a > min) {
+                bin |= 0b00000001;
+            }
+            if (b > min) {
+                bin |= 0b00000010;
+            }
+            if (c > min) {
+                bin |= 0b00000100;
+            }
+            if (d > min) {
+                bin |= 0b00001000;
+            }
+            if (e > min) {
+                bin |= 0b00010000;
+            }
+            if (f > min) {
+                bin |= 0b00100000;
+            }
+            if (g > min) {
+                bin |= 0b01000000;
+            }
+            if (h > min) {
+                bin |= 0b10000000;
+            }
+            } else {
+                if (a < min) {
+                bin |= 0b00000001;
+            }
+            if (b < min) {
+                bin |= 0b00000010;
+            }
+            if (c < min) {
+                bin |= 0b00000100;
+            }
+            if (d < min) {
+                bin |= 0b00001000;
+            }
+            if (e < min) {
+                bin |= 0b00010000;
+            }
+            if (f < min) {
+                bin |= 0b00100000;
+            }
+            if (g < min) {
+                bin |= 0b01000000;
+            }
+            if (h < min) {
+                bin |= 0b10000000;
+            }
+            
+            }
+            
+            return bin;
+        }
+        
+    </script>
+</html>
