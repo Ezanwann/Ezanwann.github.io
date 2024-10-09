@@ -1,12 +1,15 @@
 [
     {
-        "name": "Hiragii ep 1",
+        "name": "Hiragi ep 1",
         "category": "PencuriMovie",
         "info": {
             "poster": "https://image.tmdb.org/t/p/w185/6w7vApBT34Kb6B7ITxs45l9gswx.jpg",
             "year": "2024"
         },
-"video": "https://mq911as.cloudatacdn.com/u5kj7khurlclsdgge7d6upaedgon7ald7cml5ivabocn4iwpbkq4amphdy2q/1tdkgtp8sw~yEJZgwLWV9?token=4e8yro89s7zb5awxcyko2wb2&expiry=1728480045673"
+"video": "https://mq911as.cloudatacdn.com/u5kj7khurlclsdgge7d6upaedgon7ald7cml5ivabocn4iwpbkq4amphdy2q/1tdkgtp8sw~yEJZgwLWV9?token=4e8yro89s7zb5awxcyko2wb2&expiry=1728480045673",
+"headers":{
+"Referer":"https://dood.li"
+}
     },
 {
         "name": "Hiragi ep 2",
