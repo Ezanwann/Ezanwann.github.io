@@ -6,7 +6,7 @@
 			<ContentProtection schemeIdUri="urn:uuid:edef8ba9-79d6-4ace-a3c8-27dcd51d21ed"><cenc:pssh xmlns:cenc="urn:mpeg:cenc:2013">AAAAbXBzc2gAAAAA7e+LqXnWSs6jyCfc1R0h7QAAAE0IARIQDwhdB2RNQTWRhi/UeqTGJhoHa2FsdHVyYSIoMzA4OTYzMy00NWEyM2ViOTczYmU0ZmIxYWY0MGU3ZTgzYjhiMGYzMCoCSEQyAA==</cenc:pssh></ContentProtection>
 			<SegmentTemplate timescale="10000000" presentationTimeOffset="0" media="$RepresentationID$_Segment-$Time$.m4v" initialization="$RepresentationID$_init.m4i">
 				<SegmentTimeline>
-					<S t="128585592710000" d="60000000" r="9" />
+					<S t="128585592725140" d="60000000" r="9" />
 				</SegmentTimeline>
 			</SegmentTemplate>
 			<Representation width="480" height="270" frameRate="25/2" codecs="avc1.428015" scanType="progressive" sar="1:1" id="1716228461892item-01item" bandwidth="360000" />
