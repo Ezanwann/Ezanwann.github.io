@@ -1,0 +1,10 @@
+#EXTM3U x-tvg-url="https://bit.ly/pondan-epg, https://raw.githubusercontent.com/azimabid00/epg/main/unifi_epg.xml, https://azimabid00.github.io/epg/astro_epg.xml, https://tvxray-cdn2.eu-central-amazonaws.com/xmltv.php?username=freebasic&password=m%40laysia887&prev_days=0&next_days=2" refresh="1440" billed-msg="V4.0b - 14/8/2024 | Email: migelgonsales@bapok.best sedang digunakan untuk Sooka channel" vod_library="https://mantop.worst.workers.dev/index.html"
+
+#KODIPROP:inputstreamaddon=inputstream.adaptive
+#EXTHTTP:{"User-agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"}
+#EXTHTTP:{"Authorization":"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ3bXZlciI6Miwid21pZGZtdCI6ImFzY2lpIiwid21pZHR5cCI6MSwid21rZXl2ZXIiOjEsIndtaWRsZW4iOjUxMiwid21pZCI6Ik16Y3habVUwTnpRdE56bGhOQzAwTVdZM0xXSTFZV1F0TnpCbFpXSXpNemRtTW1VMiIsIndtb3BpZCI6MzIsImV4cCI6MTcyOTY5MDg2MCwiaWF0IjoxNzI5MDg2ODYwfQ.4wEfZ4YalZrPIgZgRGQ6RAW1U2cqh49EZfzPpvoSVfM"}
+#KODIPROP:inputstream.adaptive.manifest_type=dash
+#KODIPROP:inputstream.adaptive.license_type=org.w3.clearkey
+#KODIPROP:inputstream.adaptive.license_key={ "keys":[ { "kty":"oct", "k":"Vb22tRR+w8CUUCJpWTeA1Q", "kid":"DwhdB2RNQTWRhi/UeqTGJg" } ], "type":"temporary" }
+#EXTINF:-1 group-logo="https://telegra.ph/file/5231dea66798aba2c94b7.png" group-title="Sooka | OTTNAV ONLY" tvg-logo="https://divign0fdw3sv.cloudfront.net/Images/ChannelLogo/contenthub/193_144.png" tvg-id="104.ria",Astro RIA
+https://wann.iniluna.xyz/try/ria.mpd
