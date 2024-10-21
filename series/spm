@@ -21,5 +21,29 @@
 "headers":{
 "Referer":"https://dood.li"
        }
+  },
+{
+        "name": "ep 3",
+        "category": "Movie",
+        "info": {
+            "poster": "https://image.tmdb.org/t/p/w185/6w7vApBT34Kb6B7ITxs45l9gswx.jpg",
+            "year": "2024"
+        },
+"video":"https://ty1053vs.cloudatacdn.com/u5kjvaoochh3sdgge5xg2yasl7oti67czysk4ivwpbrangk5dh3i6p4b7j7q/sbi74obmrz~IMmkXdLmXo?token=2rocplsydhbu1jydc3jgb5dw&expiry=1729515198147",
+"headers":{
+"Referer":"https://dood.li"
+       }
+  },
+{
+        "name": "ep 4",
+        "category": "Movie",
+        "info": {
+            "poster": "https://image.tmdb.org/t/p/w185/6w7vApBT34Kb6B7ITxs45l9gswx.jpg",
+            "year": "2024"
+        },
+"video":"https://ty1053vs.cloudatacdn.com/u5kju2m7fth3sdgge75g2pyccd6nbkk5pkzud36ryb5w6muw3hdw6gj6yioa/7rlabk6fzs~bWCNj6w1py?token=wdzlowjr5zpfjxr9ovnj3t76&expiry=1729515251245",
+"headers":{
+"Referer":"https://dood.li"
+       }
   }
 ]
