@@ -45,5 +45,17 @@
 "headers":{
 "Referer":"https://dood.li"
        }
+  },
+{
+        "name": "ep 5",
+        "category": "Movie",
+        "info": {
+            "poster": "https://image.tmdb.org/t/p/w185/6w7vApBT34Kb6B7ITxs45l9gswx.jpg",
+            "year": "2024"
+        },
+"video":"https://il1046qo.cloudatacdn.com/u5kj3ahse7h3sdgge6hgyiitlajisffqjx636lr4damk2ynoaxx5chaci4ta/1sp4w8vug2~YhjVk3lNje?token=f0petrk3t1q7gxnyr7obs1gz&expiry=1729515329471",
+"headers":{
+"Referer":"https://dood.li"
+       }
   }
 ]
