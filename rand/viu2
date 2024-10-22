@@ -1,0 +1,9 @@
+[{
+        "name": "gisrhs",
+        "category": "Movie",
+        "info": {
+            "poster": "https://image.tmdb.org/t/p/w185/6w7vApBT34Kb6B7ITxs45l9gswx.jpg",
+            "year": "2024"
+        },
+"video":"https://d1k2us671qcoau.cloudfront.net/vodapi/viu_akm.m3u8?vid=19d483ee6593c8e96e709e41555e36a4&layer=Layer2&area_id=2&lang_id=3&ts=202410221604&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9kMWsydXM2NzFxY29hdS5jbG91ZGZyb250Lm5ldC92b2RhcGkvKiIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTcyOTYwMjI5OX19fV19&Signature=S0Ci00dCqGsaywT~y0CoHk0jgLoC4zOBIPltHqzXyvjYuK0v4IY6MsDTeOTjGYvWdDxykffIe4byApXKyciaR160~YhWcvVRW-DMchAf7O7AuHy-97nZj-MRPM~Q4~lFMo3erQvuYAXZXMduokIrY1AqocyGtCFFUapPm1Dn3OxLPFw7T2uOTQ3pBTkOphNmS7hSHTYCyja5WDhOcVCHvjaEa48LRlLWFW6kmCtOcz4yDOXxhnvSpIN39kaNu7ffgtAp53JVH3O1-HqNRWOumCe1Iagpg1Q6MCYsL0CELiNJTy9fzuWrFwKD4AaLoeh8nd5f7e7p2Z0IoPjzH9bqGg__&Key-Pair-Id=APKAJ6Z4RF5IYK7Y3SQQ"
+]
