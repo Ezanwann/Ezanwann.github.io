@@ -5,9 +5,15 @@
             "poster": "https://image.tmdb.org/t/p/w185/6w7vApBT34Kb6B7ITxs45l9gswx.jpg",
             "year": "2024"
         },
-"video":"https://www.viu.com/0f0e9d13-f32f-4814-88df-288d1d5bab24",
-"headers":{
-"Referer":"https://www.viu.com"
-       }
+"video":"https://d1k2us671qcoau.cloudfront.net/vodapi/viu_aws.m3u8?vid=7161f9dd06098d03ea08e36bd39811f4&layer=Layer2&area_id=2&lang_id=3&ts=202410232029&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9kMWsydXM2NzFxY29hdS5jbG91ZGZyb250Lm5ldC92b2RhcGkvKiIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTcyOTcwNDU3MH19fV19&Signature=ZfqZe5AnJGKeDerqYaIQWxZx4Qxk2jraai2TIlDyVB9aSRrfJzMWBjE~RjzymHhORBHSiVwx3maPdOeH15nZV~DuuKmEVD2CbLXSBUw79d9F7604WyMx15BXT1b2HyBqrW9bjSZROi8yQACjcxVfzxkFdo6P2-daqvaKvWWA5e4TqV1iTqwOvgf1eUEIJMt9CIij8MBxE2ufEvD7j9CS28kh3JuSefhEdjtmdE2fE8DDIRYLxZBRWcZLc9FOn26~1h9oYFgSCmcC2wwW68KR93itgEH8pgYVXVXcQmVOiNxya-4Cy3sXprhe-3ILMO-E~ALri9q~1NkU~ISb5~CKBg__&Key-Pair-Id=APKAJ6Z4RF5IYK7Y3SQQ"
+  },
+{
+        "name": "2",
+        "category": "Movie",
+        "info": {
+            "poster": "https://image.tmdb.org/t/p/w185/6w7vApBT34Kb6B7ITxs45l9gswx.jpg",
+            "year": "2024"
+        },
+"video":"https://d1k2us671qcoau.cloudfront.net/vodapi/viu_aws.m3u8?vid=7161f9dd06098d03ea08e36bd39811f4&layer=Layer2&area_id=2&lang_id=3&ts=202410232029&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9kMWsydXM2NzFxY29hdS5jbG91ZGZyb250Lm5ldC92b2RhcGkvKiIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTcyOTcwNDU3MH19fV19&Signature=ZfqZe5AnJGKeDerqYaIQWxZx4Qxk2jraai2TIlDyVB9aSRrfJzMWBjE~RjzymHhORBHSiVwx3maPdOeH15nZV~DuuKmEVD2CbLXSBUw79d9F7604WyMx15BXT1b2HyBqrW9bjSZROi8yQACjcxVfzxkFdo6P2-daqvaKvWWA5e4TqV1iTqwOvgf1eUEIJMt9CIij8MBxE2ufEvD7j9CS28kh3JuSefhEdjtmdE2fE8DDIRYLxZBRWcZLc9FOn26~1h9oYFgSCmcC2wwW68KR93itgEH8pgYVXVXcQmVOiNxya-4Cy3sXprhe-3ILMO-E~ALri9q~1NkU~ISb5~CKBg__&Key-Pair-Id=APKAJ6Z4RF5IYK7Y3SQQ"
   }
 ]
