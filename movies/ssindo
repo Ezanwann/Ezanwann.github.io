@@ -1,12 +1,12 @@
 [{
-        "name": "agsudn",
+        "name": "audn",
         "category": "Movie",
         "info": {
             "poster": "https://image.tmdb.org/t/p/w185/6w7vApBT34Kb6B7ITxs45l9gswx.jpg",
             "year": "2024"
         },
 "video":"https://ws298a.cloudatacdn.com/u5kj73ypx3clsdgge5w66oi5lz65n7gslgjai5mkfowwwxpkmmpzmqmxwrcq/w9dk0b4pfk~OBWUQBnFRn?token=cp8vqn5o1i6cn9aduncbr6rk&expiry=1729758294958",
-"subtitle":"https://wann.iniluna.xyz/movies/ssindo.srt"
+"subtitle":"https://wann.iniluna.xyz/movies/ssindo.srt",
 "headers":{
 "Referer":"https://dood.li"
        }
