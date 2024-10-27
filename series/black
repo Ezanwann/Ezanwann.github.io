@@ -9,5 +9,17 @@
 "headers":{
 "Referer":"https://dood.li"
        }
+  },
+{
+        "name": "ep 2",
+        "category": "Movie",
+        "info": {
+            "poster": "https://image.tmdb.org/t/p/w185/6w7vApBT34Kb6B7ITxs45l9gswx.jpg",
+            "year": "2024"
+        },
+"video":"https://bj169d.cloudatacdn.com/u5kjzx7gx3h3sdgge5qxcja3dn5wxgde44ljfphtz7jwwb6kv7zehp5fwjxq/w64jwk2baa~pc1gxnQD7x?token=bxvixk3dbadyuvx6th5457cm&expiry=1730042496001",
+"headers":{
+"Referer":"https://dood.li"
+       }
   }
 ]
