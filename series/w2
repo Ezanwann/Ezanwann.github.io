@@ -1,1 +1,10 @@
-https://d1k2us671qcoau.cloudfront.net/vodapi/viu_aws.m3u8?vid=19d483ee6593c8e96e709e41555e36a4&layer=Layer3&area_id=2&lang_id=3&ts=202410272058&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9kMWsydXM2NzFxY29hdS5jbG91ZGZyb250Lm5ldC92b2RhcGkvKiIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTczMDA1MTkxOH19fV19&Signature=e1ZYwBgfAPLOzZBykWjNGhznPH4JkLjpPgEnI9pkChhjkKpvkw4lVUZaZxpNa6zIhpQscK97TyB~WwDGwscrn1JZhUokMm6eULXXhgDW-tJswGwcIZ5PKTczZQ~6N6BBeimhdbKTXr-KOXaidaW3Cgfv2HzBBvMvQ4ovq3xApUa6Jz~M-ogl3SgZVKD302tAvRGj9ojs2Zrd-i5nFvac1ffN8beJY7B9OFY63rSxderJjSOsVKYgblUN~LzmK4ij5xLVE49aaGBuM0moQ94RoaBpsEpKIyNFE5-A2pSSq3JShyQGj5m0-VxvDRCZcThD7-pp2TEI-3vl22f4Nzdq3g__&Key-Pair-Id=APKAJ6Z4RF5IYK7Y3SQQ
+[{
+        "name": "ep 1",
+        "category": "Movie",
+        "info": {
+            "poster": "https://image.tmdb.org/t/p/w185/6w7vApBT34Kb6B7ITxs45l9gswx.jpg",
+            "year": "2024"
+        },
+"video":"https://d1k2us671qcoau.cloudfront.net/vodapi/viu_aws.m3u8?vid=19d483ee6593c8e96e709e41555e36a4&layer=Layer3&area_id=2&lang_id=3&ts=202410272058&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9kMWsydXM2NzFxY29hdS5jbG91ZGZyb250Lm5ldC92b2RhcGkvKiIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTczMDA1MTkxOH19fV19&Signature=e1ZYwBgfAPLOzZBykWjNGhznPH4JkLjpPgEnI9pkChhjkKpvkw4lVUZaZxpNa6zIhpQscK97TyB~WwDGwscrn1JZhUokMm6eULXXhgDW-tJswGwcIZ5PKTczZQ~6N6BBeimhdbKTXr-KOXaidaW3Cgfv2HzBBvMvQ4ovq3xApUa6Jz~M-ogl3SgZVKD302tAvRGj9ojs2Zrd-i5nFvac1ffN8beJY7B9OFY63rSxderJjSOsVKYgblUN~LzmK4ij5xLVE49aaGBuM0moQ94RoaBpsEpKIyNFE5-A2pSSq3JShyQGj5m0-VxvDRCZcThD7-pp2TEI-3vl22f4Nzdq3g__&Key-Pair-Id=APKAJ6Z4RF5IYK7Y3SQQ"
+}
+]
