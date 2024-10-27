@@ -9,5 +9,18 @@
 "headers":{
 "Referer":"https://dood.li"
        }
+  },
+{
+        "name": "ep 2",
+        "category": "Movie",
+        "info": {
+            "poster": "https://image.tmdb.org/t/p/w185/6w7vApBT34Kb6B7ITxs45l9gswx.jpg",
+            "year": "2024"
+        },
+"video":"https://d1k2us671qcoau.cloudfront.net/vodapi/m3u8size.php?vid=3fca2babc4df7469fbe4a27fd6d3f257&layer=Layer3&ts=202410272037&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9kMWsydXM2NzFxY29hdS5jbG91ZGZyb250Lm5ldC92b2RhcGkvKiIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTczMDA1MDY0Mn19fV19&Signature=O6pppTT297PlXvpbj~i2zUmzBNvwR1KW20Y9wvE1AoFsWa2ktaWFh7asGvWDLegy8E7SqbavGytUNU~CUkeClp~eN9tEgncn9pGu6DSRXRUNuNYNBKzsam6htMYNgfasnw~KMfAP7yWmfl6wunzlKgiaW71svItqyYxtJVlTolHSuUJSPNkh~xQxquVttBW2YkNAZpsmdkWVo2BTiPiLMaMxZd5nnnw9DlCGseDBnP5cIVfZaJsbiglY1Ra2lOQuGAooxC2SrKlcZ0Sak7Y5s1sdXhzPkcaUiGshJG~9cjrKGCZVU49oQXWieDFe29EOlEmd2xdb6o-H0aySD9vm3A__&Key-Pair-Id=APKAJ6Z4RF5IYK7Y3SQQ",
+"headers":{
+"Referer":"https://dood.li"
+       }
   }
+
 ]
