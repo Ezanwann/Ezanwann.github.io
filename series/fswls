@@ -1,0 +1,13 @@
+[{
+        "name": "ep 1",
+        "category": "Movie",
+        "info": {
+            "poster": "https://image.tmdb.org/t/p/w185/6w7vApBT34Kb6B7ITxs45l9gswx.jpg",
+            "year": "2024"
+        },
+"video":"https://d1k2us671qcoau.cloudfront.net/vodapi/viu_aws.m3u8?vid=3bec25398e7b0caee85355acb1e80b3e&layer=Layer3&area_id=2&lang_id=3&ts=202410271944&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiaHR0cHM6Ly9kMWsydXM2NzFxY29hdS5jbG91ZGZyb250Lm5ldC92b2RhcGkvKiIsIkNvbmRpdGlvbiI6eyJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTczMDA0NzQ4MH19fV19&Signature=kdyVdE2ccA3cszG6QflPPqsHQROGU~G~Edj-DMJWgIwNAjMXVHu23GLkhxCqfl9ialkFHr60NBGMspKk0p0gmf0Ya-fJG6aFZ~iRMxVhmMcorEeQiAtKnIlgv25z0qdhdlHpbGF3H~pBzvh4fQLI2WdVuc~66vPelBEDbSHHMWfXoLjDnqHRTAxK8ljqk6E2hXndii6c05XEHHMy4z0sLGqhtV-GZMRO2qNSWnPkHThJnqBrNiTEKV8s84RtSSx96adKDyoilSPs5IMQbmx5u4kigTlECkJc0B0i8GSvW7jQ7HQq2PaXfDIU2HsJYjERoVph11F0MX7Pu-NcVwFf7g__&Key-Pair-Id=APKAJ6Z4RF5IYK7Y3SQQ",
+"headers":{
+"Referer":"https://dood.li"
+       }
+  }
+]
