@@ -1,0 +1,37 @@
+[
+  {
+    "name": "FSWL",
+    "category": "Drama",
+    "info": {
+      "genre": [
+        "drama",
+        "history"
+      ]
+    },
+    "seasons": [
+      {
+        "season": 1,
+        "info": {
+          "genre": [
+            "drama",
+            "history"
+          ]
+        },
+        "episodes": [
+          {
+            "episode": 1,
+            "name": "Intro",
+            "info": {
+              "plot": "Something happens...",
+              "cast": [
+                "John Dow1",
+                "Jane Dow2"
+              ]
+            },
+            "video": "https://d1k2us671qcoau.cloudfront.net/vodapi/viu_aws.m3u8?vid=3bec25398e7b0caee85355acb1e80b3e&layer=Layer3&area_id=2&lang_id=3&ts=20241027193"
+          }
+        ]
+      }
+    ]
+  }
+]
