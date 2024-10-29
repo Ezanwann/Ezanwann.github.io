@@ -1,0 +1,15 @@
+[
+
+{
+        "name": "ep 1",
+        "category": "Movie",
+        "info": {
+            "poster": "https://image.tmdb.org/t/p/w185/6w7vApBT34Kb6B7ITxs45l9gswx.jpg",
+            "year": "2024"
+        },
+"video":"https://i290oo.cloudatacdn.com/u5kj7sc6q7clsdgge5rosoytis5weygp5bogt6ifgqatiayqz6ft6swn6w3a/4zsfp6m9y2~FzZw7WsLfH?token=sp58wzg1u0zgshccxag248dd&expiry=1730178688458",
+"headers":{
+"Referer":"https://dood.li"
+       }
+  }
+]
