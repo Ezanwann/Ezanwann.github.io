@@ -1,2 +1,24 @@
-#EXTINF:-1 type="movie" group-logo="https://dewanonton.online/static/img/logo-dewanonton.png" group-title="DewaNonton VOD" tvg-logo="https://m.media-amazon.com/images/M/MV5BZTRkYTU4M2ItOWE4MS00MTNlLWEyNTAtYWRkMmUxYTZkNTFkXkEyXkFqcGdeQXVyMjMxMTE2MTQ@._V1_SX300.jpg",I.D ep 1
-https://rie172l.cloudatacdn.com/u5kjvguw33dlsdgge7mbajkfjpiqqeuniqnd24suyb2km5iywgqawbuu7nkq/i52t0fcjgz~csSSYaKeE5?token=6c5f7qm60rl2b9kr4bycaoq7&expiry=1725623696556
+[{
+        "name": "ep 1",
+        "category": "Movie",
+        "info": {
+            "poster": "https://image.tmdb.org/t/p/w185/6w7vApBT34Kb6B7ITxs45l9gswx.jpg",
+            "year": "2024"
+        },
+"video":"https://rie172l.cloudatacdn.com/u5kjvguw33dlsdgge7mbajkfjpiqqeuniqnd24suyb2knti6icdlh44db24a/m6nammo5pe~saUn4LPWvJ?token=6c5f7qm60rl2b9kr4bycaoq7&expiry=1730472804481",
+"headers":{
+"Referer":"https://dood.li"
+       }
+  },{
+        "name": "ep 2",
+        "category": "Movie",
+        "info": {
+            "poster": "https://image.tmdb.org/t/p/w185/6w7vApBT34Kb6B7ITxs45l9gswx.jpg",
+            "year": "2024"
+        },
+"video":"https://lz952tm.cloudatacdn.com/u5kjzkeq33dlsdgge7mbamycj72eq4oauq7wxtyd3hesb46c2d6s47pmic5q/1tjv8vwhbu~rIXtUIe0jg?token=z3o7w987kst7x290h6d6nglj&expiry=1730472839375",
+"headers":{
+"Referer":"https://dood.li"
+       }
+  }
+]
