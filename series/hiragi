@@ -62,6 +62,17 @@
 "Referer":"https://dood.li"
        }
   }
-
+,{
+        "name": "ep 15",
+        "category": "Movie",
+        "info": {
+            "poster": "https://image.tmdb.org/t/p/w185/6w7vApBT34Kb6B7ITxs45l9gswx.jpg",
+            "year": "2024"
+        },
+"video":"https://s248dk.cloudatacdn.com/u5kj6lo3bhc3sdgge5a7gnytlk2bw3ayoqrblme2dbbh27k7ia6fudwp6luq/tymg4b4m71~TXYhvl6q7B?token=plar6ttp28wnqg4fr8t6kca0&expiry=1731646685527",
+"headers":{
+"Referer":"https://dood.li"
+       }
+  }
 
 ]
