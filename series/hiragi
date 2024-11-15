@@ -73,6 +73,17 @@
 "headers":{
 "Referer":"https://dood.li"
        }
+  },{
+        "name": "ep 16",
+        "category": "Movie",
+        "info": {
+            "poster": "https://image.tmdb.org/t/p/w185/6w7vApBT34Kb6B7ITxs45l9gswx.jpg",
+            "year": "2024"
+        },
+"video":"https://d312ow.cloudatacdn.com/u5kj6oyzbtc3sdgge5w7gnixllr2a67ytsp243s6estzxd3sbhmzlcgqbbya/u3a82zudgq~sB4P3w1v3c?token=8tckxsn90c1ak9frw4uijko7&expiry=1731646774021",
+"headers":{
+"Referer":"https://dood.li"
+       }
   }
 
 ]
