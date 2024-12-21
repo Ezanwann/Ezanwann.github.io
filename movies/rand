@@ -1,11 +1,11 @@
 [{
-        "name": "muj",
+        "name": "mujj",
         "category": "Movie",
         "info": {
             "poster": "https://image.tmdb.org/t/p/w185/6w7vApBT34Kb6B7ITxs45l9gswx.jpg",
             "year": "2024"
         },
-"video":"https://storage.dewanonton.online/hls/a840ee56-8004-4131-82eb-9b5c0a8a8e20.mp4/index.m3u8"
+"video":"https://hls2.dewanonton.online/vultr/OThBAAdPLucGI/hls-stream.m3u8"
   },
 {
         "name": "interstellar",
