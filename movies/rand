@@ -30,4 +30,16 @@
 "headers":{
 "Referer":"https://dood.li"
        }
+  },
+{
+        "name": "don dukun",
+        "category": "Movie",
+        "info": {
+            "poster": "https://image.tmdb.org/t/p/w185/6w7vApBT34Kb6B7ITxs45l9gswx.jpg",
+            "year": "2024"
+        },
+"video":"https://dm545lq.cloudatacdn.com/u5kj62fct7c3sdgge73pimcpiqy3f3sir273xvxu5lpjkvwr77mc7kmjpgvq/zlxk6kt5x0~rX8va8JJIv?token=zxf48vimm04y1p1yqdt7wyi7&expiry=1736600253217",
+"headers":{
+"Referer":"https://dooodster.com"
+       }
   }]
