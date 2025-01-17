@@ -54,4 +54,16 @@
 "headers":{
 "Referer":"https://dooodster.com"
        }
+  },
+{
+        "name": "kahar",
+        "category": "Movie",
+        "info": {
+            "poster": "https://image.tmdb.org/t/p/w185/6w7vApBT34Kb6B7ITxs45l9gswx.jpg",
+            "year": "2024"
+        },
+"video":"https://jm305k.cloudatacdn.com/u5kj6kkp3dc3sdgge7ipsyqhdrfmwm6hlxyziqfuv7a4hp2y6qwqf3q6pwna/ldvjw1cofg~HfGRpSsmN6?token=t0qjt2ck32dafl3b6tkmk14a&expiry=1737099363937",
+"headers":{
+"Referer":"https://dooodster.com"
+       }
   }]
