@@ -66,4 +66,15 @@
 "headers":{
 "Referer":"https://dooodster.com"
        }
+  },{
+        "name": "kapla",
+        "category": "Movie",
+        "info": {
+            "poster": "https://image.tmdb.org/t/p/w185/6w7vApBT34Kb6B7ITxs45l9gswx.jpg",
+            "year": "2024"
+        },
+"video":"https://jm523ml.cloudatacdn.com/u5kj6kkp3dc3sdgge7ipsyqhdrfmwm6hlxyziqfuvyp4hp2y6qwq4lqtk3bq/ym07ufam6f~rAiRNnaLih?token=t0qjt2ck32dafl3b6tkmk14a&expiry=1737170921237",
+"headers":{
+"Referer":"https://dooodster.com"
+       }
   }]
