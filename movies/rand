@@ -67,7 +67,7 @@
 "Referer":"https://dooodster.com"
        }
   },{
-        "name": "kapla",
+        "name": "kahpla",
         "category": "Movie",
         "info": {
             "poster": "https://image.tmdb.org/t/p/w185/6w7vApBT34Kb6B7ITxs45l9gswx.jpg",
@@ -77,4 +77,17 @@
 "headers":{
 "Referer":"https://dooodster.com"
        }
-  }]
+  },
+{
+        "name": "ep 1",
+        "category": "oct",
+        "info": {
+            "poster": "https://image.tmdb.org/t/p/w185/6w7vApBT34Kb6B7ITxs45l9gswx.jpg",
+            "year": "2024"
+        },
+"video":"https://dp733mk.cloudatacdn.com/u5kj6v4jitflsdgge5mfwo2pkkrtyvatclg3za7cxtjxsdlg6qwxkgfohlfq/yjc7e09ee5~Cfv5ArQ5UA?token=q63ttuf6yib7gchkbi7zgog6&expiry=1737536890181",
+"headers":{
+"Referer":"https://dooodster.com"
+       }
+  }
+]
