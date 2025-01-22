@@ -89,5 +89,17 @@
 "headers":{
 "Referer":"https://dooodster.com"
        }
+  },
+{
+        "name": "ep 2",
+        "category": "oct",
+        "info": {
+            "poster": "https://image.tmdb.org/t/p/w185/6w7vApBT34Kb6B7ITxs45l9gswx.jpg",
+            "year": "2024"
+        },
+"video":"https://iii286.cloudatacdn.com/u5kj76efitflsdgge5mfwyiplvxlpgrttfhu3ecy6d6ygp3rdbpxpvrqhmna/u5oa9o96c0~GAbV1JzGcu?token=d36ctari89lyp5cwdthy2ygh&expiry=1737537450581",
+"headers":{
+"Referer":"https://dooodster.com"
+       }
   }
 ]
