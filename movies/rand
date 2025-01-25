@@ -116,5 +116,23 @@
             "year": "2024"
         },
 "video":"http://127.0.0.1:9000/a.mp4"
+  },
+{
+        "name": "ep 1",
+        "category": "w",
+        "info": {
+            "poster": "https://image.tmdb.org/t/p/w185/6w7vApBT34Kb6B7ITxs45l9gswx.jpg",
+            "year": "2024"
+        },
+"video":"https://vuclip-bpcdn.viu.com/4e710f0cd060413eab3dccd745de5673/VP6_V20231106162653/P2/video/53a04cfa-966c-4f38-a683-72d14ffb971a/output.ts?sign=1737810668-xuRkOxlriCljGgWsv2hA8czVVTzhQ0sQ-0-1c55648bff821600b50a32317d2ba756"
+  },
+{
+        "name": "play",
+        "category": "local-wann",
+        "info": {
+            "poster": "https://image.tmdb.org/t/p/w185/6w7vApBT34Kb6B7ITxs45l9gswx.jpg",
+            "year": "2024"
+        },
+"video":"http://127.0.0.1:9000/a.mp4"
   }
 ]
