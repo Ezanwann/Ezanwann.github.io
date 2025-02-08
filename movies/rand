@@ -165,5 +165,13 @@
 "headers":{
 "Referer":"https://dooodster.com"
        }
+  },{
+        "name": "ep 2",
+        "category": "OCTs2",
+        "info": {
+            "poster": "https://image.tmdb.org/t/p/w185/6w7vApBT34Kb6B7ITxs45l9gswx.jpg",
+            "year": "2024"
+        },
+"video":"https://62lcxnbxr456.premilkyway.com/hls2/01/08324/ob7hac87r2jo_n/index-v1-a1.m3u8?t=gS-P2iWcK225Kjmovkgft4CeGi0cK7_SQsm0iXoRelg&s=1738988246&e=129600&f=41623875&srv=z13jtbat10fa85i&i=0.4&sp=500&p1=z13jtbat10fa85i&p2=z13jtbat10fa85i&asn=10030"
   }
 ]
