@@ -914,10 +914,20 @@ function zoomIn(e){
     div.style.top="25vh"
     div.style.left="0px"
     div.style.zIndex="9999999"
+    let bg=document.createElement("div")
+    bg.style.position="absolute"
+    bg.style.top=0
+    bg.style.left=0
+    bg.style.width="100vw"
+    bg.style.height="100vh"
+    bg.style.background="rgba(200,0,0,0.5)"
+    bg.style.zIndex="9999991"
+    document.body.appendChild(bg)
     console.log("clicked")
     document.body.appendChild(div)
     p.onclick=function(){
        document.body.removeChild(div)
+       document.body.removeChild(bg)
     }
 }
 
