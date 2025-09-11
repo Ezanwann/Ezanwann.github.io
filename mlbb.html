@@ -904,6 +904,10 @@ function zoomIn(e){
     let dimg=document.createElement("div")
     let p=document.createElement("p")
     p.innerHTML="X"
+    p.style.fontSize="15px"
+    p.style.color="white"
+    p.align="center"
+    p.style.marginTop="5vh"
     div.appendChild(dimg)
     div.appendChild(p)
     dimg.appendChild(img)
@@ -911,7 +915,7 @@ function zoomIn(e){
     dimg.style.width="100vw"
     img.style.width="100%"
     div.style.position="absolute"
-    div.style.top="25vh"
+    div.style.top="30vh"
     div.style.left="0px"
     div.style.zIndex="9999999"
     let bg=document.createElement("div")
@@ -920,7 +924,7 @@ function zoomIn(e){
     bg.style.left=0
     bg.style.width="100vw"
     bg.style.height="100vh"
-    bg.style.background="rgba(200,0,0,0.5)"
+    bg.style.background="rgba(20,20,20,0.5)"
     bg.style.zIndex="9999991"
     document.body.appendChild(bg)
     console.log("clicked")
