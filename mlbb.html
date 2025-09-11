@@ -1,0 +1,406 @@
+<!-- mobile -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>darksystem kongsi</title>
+        <link rel="stylesheet" href="home.css"></link>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
+        <meta charset="UTF-8"/>            
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <link href="https://fonts.googleapis.com/css?family=Merriweather&display=swap" rel="preload" as ="style">
+        <link href="https://fonts.googleapis.com/css?family=Delius&display=swap" rel="preload" as="style">
+        <link href="https://fonts.googleapis.com/css?family=Merriweather&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Delius&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=gamepad" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=leaderboard" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=stadia_controller" />
+        <script src="https://kit.fontawesome.com/6fcd35e460.js" crossorigin="anonymous"></script>
+    </head>
+    <body >
+    <div class="con">
+        <div class="main">
+            <div class="container-btn"> 
+               <div class="nav">
+               
+               <p class="mtitle"><span class="material-symbols-outlined">
+stadia_controller
+</span>darksystem <span class="infos">mal © 2025</span></p>
+               <a class="logout" href="http://ezanpurple.cf/shafik/foodbank/welcome"><i class="fas fa-sign-out-alt flg"></i>Log Out</a>
+               
+        </div> 
+        
+           </div> 
+        </div>
+        <div class="introcondiv">
+        <div class="introcon">
+            
+            <div class="introout">
+            <div class="intro"></div>
+            </div>
+            <div class="news"></div>
+          <!--  <div class="getfood">
+                <div class="getfoodcon">
+                    <p>SCAN QR HERE FOR FOOD VOUCHER</p>
+                    <div class="qrdiv">
+                        <img class="qrimg" src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Totally_not_a_Rickroll_QR_code.png"/>
+                    </div>
+                    <p class = "how">How ?</p>
+                    <ul class="step">
+                        <li>• Open qr scanner.</li>
+                        <li>• Scan this code.</li>
+                        <li>• Claim voucher.</li>
+                        <li>• Go to the nearest foodbank.</li>
+                        <li>• Enjoy your meal.</li>
+                    </ul>
+                </div>
+            </div>-->
+            <div class="info">
+            
+                <canvas id="cvs" width="360" height="500" ></canvas>
+            </div>
+            <div class="vsn">
+                <h4>semboy</h4>
+                <di class="vsndiv"><img class="vsni" src="https://upload.wikimedia.org/wikipedia/sco/thumb/b/bf/KFC_logo.svg/1200px-KFC_logo.svg.png"/></div>
+            </div>
+        </div>
+        </div>
+        <div class="btmnavcon">
+            <div class="btmnav">
+                <ul>
+                    <li><a class="nbtn outletsbtn" href="#"><i class="far fa-newspaper ff"></i>sejarah</a></li>
+                   <!-- <li><a class="nbtn getfoodbtn" href="#"><i class="fas fa-utensils ff" style="display:block;"></i>get</a></li>-->
+                   <!-- <li><a class="sfdbtn" href="#"><i class="fas fa-hamburger ff"></i>send</a></li>-->
+                    <li><a class="nbtn infobtn" href="#"><span class="material-symbols-outlined sicon2" style="display:block">
+leaderboard
+</span>mvp</a></li>
+                    <li><a class="nbtn vsnbtn" href="#"><i class="fas fa-info ff" style="display:block;"></i>info</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        
+        </div>
+        <div class="sendfoodcon">
+          <div class="closesfc">x</div>
+            <div class="sendfood">
+                <p>From :</p>
+                <div class="sendlist">
+                    <a href="#"><div class="market supermarket"></div><p>supermarket</p></a>
+                    <a href="#"><div class="market localstore"></div><p class="localstoret">local store</p></a>
+                    <a href="#"><div class="market kfc"></div><p class="kfct">kfc</p></a>
+                    
+                    <a href="#"><div class="market localstore"></div><p class="localstoret">local store</p></a>
+                    <a href="#"><div class="market localstore"></div><p class="localstoret">local store</p></a>
+                </div>
+            </div>
+        </div>
+        <script>
+        function rmv () {
+            let divs = document.querySelectorAll("div");
+            divs[divs.length - 1].style.display = "none"
+        }
+    </script>
+    <script src="http://ezanpurple.cf/SimpleGallery.js"></script>
+    </body>
+    <script src="home.js"></script>
+    
+    <script>
+        
+        
+
+
+
+const words = ["food", "drink", "money"];
+
+
+let typewriter = {
+    count: 0,
+    done: false
+} ;
+
+function changespanword (words, span, count, done) {
+    let word = words[count];
+    let spanlength = span.innerHTML.length;
+    if (word.length == spanlength) done = true;
+    if (done) {        
+      let spanword = span.innerHTML;
+        if (spanlength == 0) {            
+            count ++ ;
+            done = false;
+            if (count > words.length - 1) count = 0;                
+            setTimeout ( () => changespanword(words, span, count, done), 500);            
+            return;
+        } 
+        setTimeout ( () => {
+            span.innerHTML = word.slice(0, spanlength - 1);
+            changespanword(words, span, count, done);
+        }, (word.length == spanlength) ? 1400 :150);            
+    } else {        
+        span.innerHTML += word[spanlength];
+        setTimeout ( () => changespanword(words, span, count, done), 400);
+    }        
+}
+
+/*changespanword(words, span, typewriter.count, typewriter.done)*/
+
+
+
+let toggle,div,nav,abouth3,aboutimgholder,aboutcapcon,aboutcapcon2,myskillsh3,myskillscon,myskillscon2,contenthtml,contenthtmlp,conhtmlp,logoholder,imghtml,imgcss,imgjs,followh3,iconinsta,iconfb,icontw,instaname,fbname,twname,arr,btn, fbtitle, wasteword, lbtn, back, lpagedivcon,intro, outletsbtn,introcon, news ,sfdbtn, sendfood, getfoodbtn, infobtn, cvs, vsn, vsnbtn,closesfc;
+let nbtns;
+let tglsfd = false;
+
+const createcont = (intro) => {
+    
+    let div = document.createElement("div");
+    div.classList.add("content")
+    
+    div.innerHTML = "HI SHAFIK"
+    
+    intro.appendChild(div);
+}
+const createnewscont = (intro, pr, time, cap,url="https://cpb-us-e1.wpmucdn.com/blogs.uoregon.edu/dist/c/829/files/2012/10/PSD_Food_illustrations_3190_pancakes_with_butter-1wi1tz5.jpg", urlp = "https://cpb-us-e1.wpmucdn.com/blogs.uoregon.edu/dist/c/829/files/2012/10/PSD_Food_illustrations_3190_pancakes_with_butter-1wi1tz5.jpg") =>
+{   
+    
+    let div = document.createElement("div");
+    div.classList.add("newsctn")
+    let imgcon =document.createElement("div");
+    imgcon.classList.add("imgcon");
+   
+    let pp = document.createElement("div")
+    pp.classList.add("pp")
+    pp.style.background = "url(" + urlp + ")"
+    pp.style.backgroundSize = "cover"
+   
+    let imgdiv = document.createElement("img");
+    imgdiv.classList.add("newsimg")
+    imgdiv.src = url;
+    div.appendChild(imgcon)
+    imgcon.appendChild(imgdiv)
+    let capdiv = document.createElement("div");
+    capdiv.classList.add("capdiv")
+    
+    capdiv.appendChild(pp)
+    let capp = document.createElement("p");
+    capp.classList.add("capp"); 
+    let cappr = document.createElement("p");
+    cappr.classList.add("cappr"); 
+    cappr.innerHTML = pr;
+    capp.innerHTML = cap;
+    
+    let capt = document.createElement("p")
+    capt.classList.add("capt")
+    capt.innerHTML = time;
+    
+    let capcon = document.createElement("div")
+    capcon.classList.add("capcon")
+    capdiv.appendChild(capcon)
+    capcon.appendChild(cappr);
+    capcon.appendChild(capt);
+    capcon.appendChild(capp);
+    div.appendChild(capdiv);
+    intro.appendChild(div);
+}
+
+const setactive = (target, all) => {
+    for (let i of all) {
+        if (i == target)
+           i.classList.add("active")
+        else 
+           i.classList.remove("active")
+    }
+}
+
+const _load = () => {
+    nav = document.querySelector(".nav")||null;
+    nbtns = document.querySelectorAll(".nbtn")||null;
+    vsn = document.querySelector(".vsn")||null;
+    vsnbtn = document.querySelector(".vsnbtn")||null;
+    intro = document.querySelector(".intro")||null;
+    infobtn = document.querySelector(".infobtn")||null;
+    sfdbtn = document.querySelector(".sfdbtn")||null;
+    sendfood = document.querySelector(".sendfoodcon")||null;
+    getfoodbtn  = document.querySelector(".getfoodbtn ")||null;
+    news = document.querySelector(".news")||null;
+    introcon = document.querySelector(".introcon")||null;
+    outletsbtn = document.querySelector(".outletsbtn")||null;
+    fbtitle = document.querySelector(".fbtitle")||null;
+    wasteword = document.querySelector(".wasteword")||null;
+    
+    closesfc = document.querySelector(".closesfc")||null;
+    
+    //createcont(intro)
+    
+    
+    
+    
+    createnewscont(news,"KFC Official","20:21","Menu baharu untuk foodbank 👍👍","https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mjl8fHxlbnwwfHx8fA%3D%3D&w=1000&q=80", "https://upload.wikimedia.org/wikipedia/sco/thumb/b/bf/KFC_logo.svg/1200px-KFC_logo.svg.png")
+    createnewscont(news, "cofffeeguy", "19:65"," Honey 🐝")
+   createnewscont(news, "KFC Official", "12:02","tukar gambar profil dulu.", "https://upload.wikimedia.org/wikipedia/sco/thumb/b/bf/KFC_logo.svg/1200px-KFC_logo.svg.png", "https://upload.wikimedia.org/wikipedia/sco/thumb/b/bf/KFC_logo.svg/1200px-KFC_logo.svg.png")
+   
+   
+   //Tambah sini
+   
+   
+   
+   
+   
+   
+   
+   //Tambah atas
+   
+    news.onscroll = e => {
+        if (news.scrollTop > 5) {
+            nav.classList.add("smaller")
+        } else {
+            nav.classList.remove("smaller")
+        }
+    }
+   
+    outletsbtn.onclick = () => {
+        introcon.style.transform = "translateX(-100vw)"
+        setactive(outletsbtn ,nbtns )
+        
+    }
+    outletsbtn.click();
+    
+  /*  sfdbtn.onclick = () => {
+        if(!tglsfd ) {
+            sendfood.style.display = "block"
+            sendfood.style.transform = "translateY(0)"
+            sfdbtn.classList.add("active")
+        }
+        else {
+          // sendfood.style.display = "none"
+          setTimeout (()=>{
+            sendfood.style.display ="none"
+        }, 500)
+          sendfood.style.transform = "translateY(450px)"
+           sfdbtn.classList.remove("active")
+        }
+        tglsfd = !tglsfd
+        
+    }*/
+    closesfc.onclick = () => {
+        setTimeout (()=>{
+            sendfood.style.display ="none"
+        }, 500)
+           sendfood.style.transform = "translateY(450px)"
+           
+           sfdbtn.classList.remove("active")
+        
+        tglsfd = !tglsfd
+        
+    }
+    
+    
+    /*getfoodbtn.onclick = () => {
+        introcon.style.transform = "translateX(-200vw)"
+        setactive(getfoodbtn ,nbtns )
+        nav.classList.remove("smaller")
+    }*/
+    
+    vsnbtn.onclick = () => {
+        introcon.style.transform = "translateX(-400vw)"
+        setactive(vsnbtn ,nbtns )
+        nav.classList.remove("smaller")
+    }
+    
+    infobtn.onclick = () => {
+        introcon.style.transform = "translateX(-300vw)"
+        setactive(infobtn ,nbtns )
+        nav.classList.remove("smaller")
+    }
+    
+    //chart
+    Chart.defaults.global.defaultFontColor = "#ffffff"
+    var ctx = document.getElementById("cvs").getContext('2d');
+    var myChart = new Chart(ctx, { type: 'bar', data: { labels: ['COKLAT','SILVER','EMAS','MVP'], datasets: [{ label: 'Habis Game', data: [8,0,0,0], backgroundColor: [ 'rgba(25, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)' ], borderColor: [ 'rgba(5, 9, 2, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)', 'rgba(75, 192, 192, 1)' ], borderWidth: 1 }] }, options: { scales: { y: { beginAtZero: true } } } });
+    
+}
+
+const _contenthtml = () => {
+    conhtmlp.classList.toggle("html2");
+    contenthtml.classList.toggle("top");
+    imghtml.classList.toggle("scale")
+}
+const _contentcss = () =>{
+    concssp.classList.toggle("html2");
+    contentcss.classList.toggle("top");
+    imgcss.classList.toggle("scale")
+}
+
+const _contentjs = () =>{
+    conjsp.classList.toggle("html2");
+    contentjs.classList.toggle("top");
+    imgjs.classList.toggle("scale")
+}
+const show = () =>{
+    for(i of nav){
+        i.classList.toggle("show");
+    }
+}
+const popAdd = () =>{
+    for(let i of arr){
+        i.classList.add("pop");
+    }
+}
+
+const popRemove = () => {
+    for(let i of arr){
+        i.classList.remove("pop");
+    }
+}
+const _scroll = () =>{
+    let y = this.scrollY;
+    let h = this.innerHeight;
+    try{
+    if(y > h / 2 && y < h + h / 2){
+        document.body.style.background = "var(--my3)";
+        abouth3.style.opacity = 1;
+        aboutimgholder.style.opacity = 1;
+        aboutcapcon.style.marginLeft = "10px";
+        aboutcapcon2.style.opacity = 1;   
+             
+    }else if(y > h + h / 2 && y < 2 * h + h/2){
+        document.body.style.background = "var(--my)";
+        myskillsh3.style.opacity = 1; 
+        myskillscon.style.marginLeft = 0; 
+        myskillscon.style.opacity = 1; 
+             
+    }else if(y > h * 2 + h / 2 && y < h * 3 + h / 2){
+        document.body.style.background = "var(--my3)";
+        
+        followh3.style.opacity = 1;
+        popAdd();
+    }else if(y >= h * 3 ){
+        document.body.style.background = "var(--my)";
+        btn.style.opacity = 1;
+     if(y == h * 4 ){
+        document.documentElement.scrollTop = 0;
+     }
+    }
+    else{
+        document.body.style.background = "var(--my)";
+        abouth3.style.opacity = 0;
+        aboutimgholder.style.opacity = 0;
+        aboutcapcon.style.marginLeft = "-100%";
+        aboutcapcon2.style.opacity = 0;
+        myskillsh3.style.opacity = 0;  
+        myskillscon.style.marginLeft = "-100%"; 
+        myskillscon.style.opacity = 0;
+        followh3.style.opacity = 0; 
+        btn.style.opacity = 0;
+        popRemove();  
+    }
+    }catch{
+        console.error = null;
+    }
+    
+}
+
+window.onload = _load;
+window.onscroll = _scroll;
+    </script>
+</html>
