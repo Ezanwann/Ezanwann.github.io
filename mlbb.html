@@ -742,7 +742,8 @@ createnewscont(news,"mal","17:35","hasil ni hari👍💪💪","https://Ezanwann.
    
    
    
-   
+   let aimg=document.querySelectorAll("img")
+   for(let n of aimg)n.onclick=zoomIn
    
    
    //Tambah atas
@@ -895,6 +896,25 @@ const _scroll = () =>{
         console.error = null;
     }
     
+}
+
+function zoomIn(e){
+    let img=document.createElement("img")
+    let div=document.createElement("div")
+    let dimg=document.createElement("div")
+    let p=document.createElement("p")
+    p.innerHTML="X"
+    div.appendChild(dimg)
+    div.appendChild(p)
+    dimg.appendChild(img)
+    img.src=e.target.src
+    dimg.style.width="100vw"
+    img.style.width="100%"
+    div.style.position="absolute"
+    document.body.appendChild(div)
+    p.onclick=function(){
+       document.body.removeChild(div)
+    }
 }
 
 window.onload = _load;
