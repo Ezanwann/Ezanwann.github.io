@@ -911,6 +911,10 @@ function zoomIn(e){
     dimg.style.width="100vw"
     img.style.width="100%"
     div.style.position="absolute"
+    div.style.top="25vh"
+    div.style.left="0px"
+    div.style.zIndex="9999999"
+    console.log("clicked")
     document.body.appendChild(div)
     p.onclick=function(){
        document.body.removeChild(div)
