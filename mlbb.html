@@ -5,6 +5,498 @@
     <head>
         <title>darksystem kongsi</title>
         <link rel="stylesheet" href="home.css"></link>
+        <style>
+:root{
+    --my:rgb(187,16,1);
+    --bg:rgb(157,16,1);
+    --bgs:rgb(137,16,1);
+    --btmnav:rgb(176,16,1);
+    --my2:rgb(187,166,211);
+    --my3:rgb(227,186,141);
+    --my4:rgb(225,130,100);
+    --w:rgb(180,180,200);
+    --wmy:rgb(140,120,190);
+}
+
+.sicon{
+    
+    margin-right:10px;
+}
+
+.sicon2{
+    font-size:14px;
+}
+h3{
+    font-size:25px;
+}
+a{
+    text-decoration:none;
+    color:white;
+}
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body {
+    min-height: 100vh;
+    min-width: 100vw;
+    position: relative;
+    overflow: hidden;
+}
+
+.icpizza {
+    padding:3px 6px 0 0;
+}
+
+.con{
+    background:var(--bg);
+    color:white;
+    scroll-behaviour:smooth;
+    transition:.7s ease;
+    position: relative  ;
+    top:0;
+    left:0  ;
+    
+    font-family:"Merriweather",cursive;
+    width: 100%;
+    height: 100%;
+}
+
+.intro > h3{
+    letter-spacing:2px;
+    
+}
+
+.fbtitle {
+    padding-top: 100px;
+}
+
+.nav{    
+    position:fixed;
+    top:0;
+    left: 0;
+    width: 100vw;
+    padding: 12px 0 12px 5px;
+    transition:.3s ease;
+    background:var(--my);
+    display: flex;
+    z-index:999999;
+    box-shadow: 0px 10px 10px var(--bgs);
+}
+
+
+
+.nav p {
+    display: flex;
+    flex: 1;
+}
+
+.infos {
+    font-size: 4px;
+    padding:7px 0 0 10px;
+}
+
+.nav .mtitle {
+    flex:3;
+    padding:10px 0 0 7px;
+}
+
+.nav .logout {
+    font-size: 12px;
+    justify-self: flex-end;
+    align-items: center;
+    padding: 12px 7px 12px 0;
+}
+
+
+
+@media screen and (orientation:landscape){
+    #about .imgholder{
+        height:300px;
+    }
+    .btn{
+        height:18vh;
+    }
+    .about{
+        height:82vh;
+    }
+   
+    .logoholder > p{
+        height:170px;
+    }
+    .html2{
+        height:170px;
+    }
+    
+    .logoholder{
+        margin-bottom:150px;
+    }
+    #myskills{
+        height:200vh;
+    }
+    #followme{
+        height:200vh;
+    }
+}
+
+
+::placeholder {
+    color:white;
+}
+
+.btmnavcon {
+    position: fixed ;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    box-shadow: 0px -4px 10px var(--bgs);
+}
+
+.btmnav {
+    background: var(--btmnav);
+    min-width: 100vw;
+    
+}
+
+.btmnav ul {
+    display: flex;
+    justify-content: center;
+    padding:0;
+    margin:0;
+}
+
+.btmnav ul li {
+    flex: 1;
+    text-align: center;
+    list-style-type: none;
+    padding:0;
+    margin:0;
+    width:100%;
+    display:flex;
+    align-items: center;
+    height:100%;
+    font-size: 13px;
+}
+
+.btmnav ul li a {
+    width:100%;
+    min-height:100%;
+    display:block;
+    padding:0;
+    margin:0;
+    padding:15px;
+    
+}
+
+.info {
+    display: flex;
+    align-items: center;
+    font-size: 9px;
+}
+
+.introcondiv {
+    min-width: 100vw;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.introcon {
+    position: relative;
+    transition: .7s ease;
+    top:0;
+    left:0;
+    
+}
+
+.introcon > div {
+    position: absolute;
+    align-items: center;
+    min-width: 100vw;
+    top:0;
+    left: 0;
+    padding-top: 13vh;
+    overflow-y: hidden;
+    max-height: 100vh;
+    z-inded: -99999;
+}
+
+.introout {
+    overflow: hidden;
+    max-height:100vh;
+}
+
+.intro {
+    
+}
+
+.intro .content { 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-width: 100vw;
+    max-height: 100vh;
+    
+}
+
+.introcon .outlets {
+    left: 200vw;
+    display: flex;    
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.introcon .news {
+    left: 100vw;    
+    min-width:100vw;
+    overflow-y: auto;
+}
+
+.introcon .news .newsctn {
+    width: 100%;
+    height: min-content;
+    margin-bottom: 60px;
+    display: block;
+    padding: 13px;
+    background: rgba(255, 149, 58, .7);
+    border-radius:5px;
+    box-shadow: -2px -2px 10px rgba(225, 149, 58, .6), 2px 2px 10px rgba(225, 149, 58, .6);
+     
+}
+
+.capdiv {
+    margin-top: 10px;
+    display:flex;
+    
+}
+
+.capp{
+    padding: 5px 0px 0px 5px;
+    font-size: 10px;
+    
+}
+
+
+.cappr{
+    padding:5px 10px 0px 5px;
+    font-size: 14px;
+    font-weight: 800px;
+    color: black;
+}
+
+.imgcon {
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+}
+
+.newsimg {
+    width: 100%;
+    height: 100%;
+    object-fit: contain !important;
+    background: white;
+    overflow: hidden;
+}
+
+
+.introcon .getfood {
+    left: 200vw;
+}
+
+.introcon .info {
+    left: 300vw;
+}
+.main {
+    
+}
+
+.sendfoodcon {
+    width: 100vw;    
+    height: 30vh;
+    position:absolute ;
+    bottom: 9vh;
+    left: 0  ;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    transition: .5s ease;
+    transform-origin: bottom bottom;
+    transform: translateY(350px);
+    
+}
+
+.sendfood {
+    background: white;
+    width: 95%;
+    height: 100%;
+    margin:0 auto;
+    border-radius: 10px 10px 5px 5px;
+    box-shadow: 2px -4px 10px rgba(225, 225, 225, .6), -2px 0px 10px rgba(225, 225, 225, .6);
+    
+}
+
+.sendfood > p {
+    font-weight: 900;
+    padding: 20px 0 0 10px;
+    font-size: 24px;
+    text-decoration: underline ;
+}
+
+.sendlist {
+    display: flex;
+    overflow-x: scroll;
+}
+
+
+.sendlist a {
+    color: black;
+}
+
+.sendlist a p {
+    padding : 13px;
+    display:inline-block ;
+}
+.market {
+    margin: 13px;
+    width: 70px;
+    height:70px;
+    border-radius: 50% 50% 50% 50%;
+    border: solid 1.5px black;
+}
+.supermarket {
+    
+    background:url(https://png.pngtree.com/png-clipart/20200727/original/pngtree-restaurant-logo-design-vector-template-png-image_5441058.jpg);
+    background-size: contain;
+   
+}
+
+
+.localstore {
+    
+    background:url(https://thumbs.dreamstime.com/b/concept-local-store-supermaket-eco-goods-service-company-vector-icon-style-illustration-logo-isolated-symbols-web-86541574.jpg);
+    background-size: contain;
+   
+}
+
+
+.kfc {
+    
+    background:url(https://upload.wikimedia.org/wikipedia/sco/thumb/b/bf/KFC_logo.svg/1200px-KFC_logo.svg.png);
+    background-size: contain;
+   
+}
+
+.localstoret {
+    margin-left: 7px;
+}
+
+.kfct {
+    margin-left: 25px;
+}
+
+.getfoodcon > p {
+    text-align: center;
+    text-decoration: underline ;
+}
+
+.qrdiv {
+    margin: 0 auto; 
+    width:50vw;
+    height: 50vh;
+    background-size: cover;
+}
+
+.qrimg {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.active {
+    color: red;
+    background: white;
+}
+
+.introcon .vsn {
+    left: 400vw;
+}
+
+.closesfc{
+    width:22px;
+    height:22px;
+    background:black;
+    color:white;
+    font-weight: 900;
+    border-radius: 50%;
+    position:absolute;
+    text-align: center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    right:0;
+    transform:translateY(-50%) translateX(-50%);
+}
+
+.pp {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-left: 10px;
+    margin-top: 8px;
+    background-size:cover;
+}
+
+.capcon {
+    display: flex;
+    flex-direction: column;
+    margin-left:7px;
+    margin-top: 7px;
+}
+
+.capt {
+    font-size: 8px;
+    padding-left: 5px;
+}
+
+.step {
+    font-size: 13px;
+    padding-left: 15px;
+    padding-top: 8px;
+    
+}
+
+.step li {
+    list-style-type: none;
+}
+.ff {
+    display:block;
+}
+
+.flg {
+    padding-right: 2px;
+}
+
+.smaller {
+    padding: 1px 0 8px 1px;
+    font-size: 10px;
+    background:rgba(187,16,1, .7);
+}
+
+.vsn{
+    margin-top:10vh;
+}
+
+.vsndiv{
+    width:100%;
+}
+
+.vsni{
+    width:100%;
+}
+        </style>
         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
         <meta charset="UTF-8"/>            
         <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
